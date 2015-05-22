@@ -1,0 +1,33 @@
+#!/bin/bash
+DIR=$PWD
+if [[ -d $1 ]]; then
+    DIR=$1
+fi
+port=5000
+find "$DIR" | grep -e '.\.ogg$\|.\.mp3$\|.\.flac$\|.\.wav$' | while read filename; do
+    odyo=`echo $filename | grep -e '.\.ogg$\|.\.flac$\|.\.wav$'`
+    if [[ $odyo == "" ]]; then
+        echo `./atags get "$filename"`";$filename|0|0"
+    else
+        #|track|title|album|artist|genre|year|hms|ms;bitrate;sampleRate;channels;comment;pathname|fadeIn|fadeOut
+        if [[ $port != "" && $port -lt 5500 ]]; then
+            port=$((port+1))
+        else 
+            port=5000
+        fi
+        odyo=`./odyo play "$filename" 0 0 host=localhost:$port` &
+        sleep 0.5
+        odyo=`./odyo volume 0 0 0 host=localhost:$port`
+        sleep 0.5
+        ms_time_preview=`./odyo position 0 0 host=localhost:$port`
+        ms=`echo $ms_time_preview | cut -d'|' -f3 | cut -d';' -f1`
+        while [[ $ms -le 0 ]]; do
+            ms_time_preview=`./odyo position 0 0 host=localhost:$port`
+            ms=`echo $ms_time_preview | cut -d'|' -f3 | cut -d';' -f1`
+        done
+        hms=`./atags ms2hms $ms`
+        odyo=`./odyo stop 0 0 host=localhost:$port`
+        echo "|0|`basename \"$filename\"`|album|artist|genre|2014|$hms|$ms;000;44100;2;No tags;$filename|0|0"
+    fi
+done
+

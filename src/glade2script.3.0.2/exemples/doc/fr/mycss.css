@@ -1,0 +1,62 @@
+.orange {
+  background-color: rgb(255, 236, 206);
+  padding:10px;  
+}
+
+.gris {
+  background-color: rgb(224, 224, 224);
+  padding:10px;  
+}
+
+.bleu {
+ background-color: rgb(208, 224, 240);
+  padding:10px;  
+}
+#top{
+	background-color: rgb(208, 224, 240);
+	font-size:small;
+	padding:20px;
+}
+.boite {
+     margin-top: 30px;
+}
+.content_boite {
+  background-color: rgb(224, 224, 224);
+  padding:5px;  
+}
+.text{
+  margin-top:5px;
+  padding-left:5px;
+}
+.info {
+  padding-left:20px;
+  font-size:small;
+  font-style:italic;
+}
+.exemple {
+  background-color: rgb(208, 224, 240);
+  padding:5px;
+  font-family:freemono;
+}
+.return {
+  background-color: rgb(255, 236, 206);
+  padding:5px;
+  font-size:small;
+  font-weight:bold;
+}
+.align_left {
+	text-align:left;
+}
+.align_center{
+	text-align:center;
+}
+.align_right{
+	text-align:right;
+}
+.float_left {
+	float:left;
+}
+.left40p {
+  margin-left: 40px;
+}
+

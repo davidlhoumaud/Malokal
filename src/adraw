@@ -1,0 +1,58 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+
+import wave, audioop, Image, ImageDraw, sys, os
+
+def aide():
+    print("""ADraw v0.1
+by David Lhoumaud <craft@ckdevelop.org>
+big thx AnsuzPoeorth ;)
+GNU/GPL v3
+USAGE:
+    adraw <sound filename>* <png image out OR "null" value>* <width px> 
+    *mandatory
+""")
+
+def generate(filename,fileout,w,h):
+    if not '.wav' in filename:
+        #conversion wav si nécessaire
+        os.system("gst-launch filesrc location=\""+filename+"\" ! decodebin ! audioconvert ! audio/x-raw-int,channels=2,rate=44100,endianness=1234,width=32,depth=32,signed=True ! audioconvert ! wavenc ! filesink location=\""+filename+".tmp\"")
+        wave_in = wave.open(filename+".tmp",'r')
+    else:
+        wave_in = wave.open(filename,'r')
+    nb_frames = wave_in.getnframes()
+    part = nb_frames/w
+    if fileout != 'null':
+        imback = Image.new("RGBA", (w,h), (0,0,0,0))
+        im = Image.new("RGBA", (w,h), (255,255,255,0))
+        drawback, draw, i, d = ImageDraw.Draw(imback), ImageDraw.Draw(im), 0, 0
+    while True:
+        fragment = wave_in.readframes(part)
+        if fragment == "": break
+        avg = (audioop.rms(fragment, 2) / 100) / 2
+        if fileout != 'null':
+            draw.line((i, d) + (i+1, avg), fill="red", width=1)
+            d=avg
+            i+=1
+        else:
+            print avg
+    
+    if fileout != 'null':
+        box = (0, 0, w, 100)
+        out1= im.crop(box)
+        out2 = out1.transpose(Image.FLIP_TOP_BOTTOM)
+        imback.paste(out1,(0,100))
+        imback.paste(out2,(0,0))
+        drawback.line((0, h/4) + (w, h/4), fill="rgb(54,107,141)", width=1)
+        drawback.line((0, h/2) + (w, h/2), fill="green", width=1)
+        drawback.line((0, h/1.33333333333) + (w, h/1.33333333333), fill="rgb(54,107,141)", width=1)
+        imback.save(fileout, "PNG")
+
+
+if len(sys.argv) <= 2:
+    aide()
+else:
+    if len(sys.argv) >= 4:
+        generate(sys.argv[1], sys.argv[2], int(sys.argv[3]), 200)
+    else:
+        generate(sys.argv[1], sys.argv[2], 500, 200)

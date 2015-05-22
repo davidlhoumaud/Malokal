@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<interface>
+  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkWindow" id="window1">
+    <property name="visible">True</property>
+    <property name="title" translatable="yes">Clic-droit (menu-contextuel)</property>
+    <property name="window_position">center</property>
+    <signal name="destroy" handler="gtk_widget_destroy"/>
+    <child>
+      <object class="GtkVBox" id="vbox1">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkLabel" id="label5">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Clic-droit dans les cases.</property>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox1">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkEventBox" id="_event_list">
+                <property name="visible">True</property>
+                <signal name="button_press_event" handler="on_menu" object="menu1"/>
+                <child>
+                  <object class="GtkFrame" id="frame1">
+                    <property name="visible">True</property>
+                    <property name="label_xalign">0</property>
+                    <child>
+                      <object class="GtkLabel" id="_label_list">
+                        <property name="width_request">100</property>
+                        <property name="height_request">100</property>
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">MENULIST</property>
+                        <property name="justify">center</property>
+                      </object>
+                    </child>
+                    <child type="label">
+                      <object class="GtkLabel" id="label1">
+                        <property name="visible">True</property>
+                        <property name="use_markup">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="padding">7</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEventBox" id="_event_check">
+                <property name="visible">True</property>
+                <signal name="button_press_event" handler="on_menu" object="menu2"/>
+                <child>
+                  <object class="GtkFrame" id="frame2">
+                    <property name="visible">True</property>
+                    <property name="label_xalign">0</property>
+                    <child>
+                      <object class="GtkLabel" id="_label_check">
+                        <property name="width_request">100</property>
+                        <property name="height_request">100</property>
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">MENU</property>
+                        <property name="justify">center</property>
+                      </object>
+                    </child>
+                    <child type="label">
+                      <object class="GtkLabel" id="label4">
+                        <property name="visible">True</property>
+                        <property name="use_markup">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="padding">7</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEventBox" id="_event_radio">
+                <property name="visible">True</property>
+                <signal name="button_press_event" handler="on_menu" object="menu3"/>
+                <child>
+                  <object class="GtkFrame" id="frame3">
+                    <property name="visible">True</property>
+                    <property name="label_xalign">0</property>
+                    <child>
+                      <object class="GtkLabel" id="_label_radio">
+                        <property name="width_request">100</property>
+                        <property name="height_request">100</property>
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">MENURADIO</property>
+                        <property name="justify">center</property>
+                      </object>
+                    </child>
+                    <child type="label">
+                      <object class="GtkLabel" id="_label_frame">
+                        <property name="visible">True</property>
+                        <property name="use_markup">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="padding">7</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMenu" id="menu1">
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkMenuItem" id="_menuitem1">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Couleur rouge</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_clicked"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="_menuitem2">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Couleur noir</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_clicked"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="_menuitem3">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Couleur #C07474</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_clicked"/>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMenu" id="menu2">
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkCheckMenuItem" id="_checkmenuitem1">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Font</property>
+        <property name="use_underline">True</property>
+        <signal name="toggled" handler="on_toggled"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="_checkmenuitem2">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Texte</property>
+        <property name="use_underline">True</property>
+        <signal name="toggled" handler="on_toggled"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="_checkmenuitem3">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Background</property>
+        <property name="use_underline">True</property>
+        <signal name="toggled" handler="on_toggled"/>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMenu" id="menu3">
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkRadioMenuItem" id="_radiomenuitem1">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">radiomenuitem1</property>
+        <property name="use_underline">True</property>
+        <property name="draw_as_radio">True</property>
+        <signal name="toggled" handler="on_toggled"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkRadioMenuItem" id="_radiomenuitem2">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">radiomenuitem2</property>
+        <property name="use_underline">True</property>
+        <property name="draw_as_radio">True</property>
+        <property name="group">_radiomenuitem1</property>
+        <signal name="toggled" handler="on_toggled"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkRadioMenuItem" id="_radiomenuitem3">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">radiomenuitem3</property>
+        <property name="use_underline">True</property>
+        <property name="draw_as_radio">True</property>
+        <property name="group">_radiomenuitem1</property>
+        <signal name="toggled" handler="on_toggled"/>
+      </object>
+    </child>
+  </object>
+</interface>

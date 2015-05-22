@@ -1,0 +1,1003 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+  <title>Signals and callbacks</title>
+</head>
+<body>
+<!-- HEADER -->
+<table style="width:100%;" summary="Navigation header">
+<tbody>
+<tr>
+<td></td>
+<th class="align_center"><span class="bold">Signals and callbacks</span></th>
+<td></td>
+</tr>
+<tr>
+<td class="align_left"><a href="principe.html">Prev</a></td>
+<td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+<td class="align_right"><a href="commandes.html">Next</a></td>
+</tr>
+</tbody>
+</table>
+
+<hr><br>
+<h2>Signals and callbacks</h2>
+In the glade, for each widget on which you want to associate
+an action, you will have to add a signal. This signal, to which a
+callback will be linked, will run a function of the associate
+script, corresponding to the widget name, with an argument.<br>
+<br>
+Few callbacks do not have any output, they act directly on the
+interface.<br>
+<br>
+It can be useful to add user data. The widget indicated in
+this data will run the callback.<br>
+FOr example, if we add in <i>user data</i>
+a <i>widget entry</i>
+on the signal of a button,<i>signal clicked, callback on_entry</i>, the function of the entry will be run with its content as argument when the button will be pressed. It can be said that the button will act as the entry.<br>
+The user data are also necessary for the callbacks that act directly on the interface.<br>
+
+<br>
+<br>
+<div id="top">
+<b><a href="#auto_scale">auto_scale</a><i></i></b><br/>
+<b><a href="#auto_scale_img">auto_scale_img</a><i></i></b><br/>
+<b><a href="#clear_entry">clear_entry</a><i></i></b><br/>
+<b><a href="#clic_droit">clic_droit</a><i></i></b><br/>
+<b><a href="#double_clic">double_clic</a><i></i></b><br/>
+<b><a href="#drag_data_get">drag_data_get</a><i></i></b><br/>
+<b><a href="#drag_data_received">drag_data_received</a><i></i></b><br/>
+<b><a href="#drag_drop">drag_drop</a><i></i></b><br/>
+<b><a href="#enter_notify_event">enter_notify_event</a><i></i></b><br/>
+<b><a href="#expander_cb">expander_cb</a><i></i></b><br/>
+<b><a href="#get_pointer">get_pointer</a><i></i></b><br/>
+<b><a href="#gtk_widget_destroy">gtk_widget_destroy</a><i></i></b><br/>
+<b><a href="#gtk_widget_destroy_save">gtk_widget_destroy_save</a><i></i></b><br/>
+<b><a href="#key_press">key_press</a><i></i></b><br/>
+<b><a href="#key_release">key_release</a><i></i></b><br/>
+<b><a href="#kill_term_child">kill_term_child</a><i></i></b><br/>
+<b><a href="#leave_notify_event">leave_notify_event</a><i></i></b><br/>
+<b><a href="#my_callback">my_callback</a><i></i></b><br/>
+<b><a href="#off_active">off_active</a><i></i></b><br/>
+<b><a href="#off_blinking">off_blinking</a><i></i></b><br/>
+<b><a href="#off_expander">off_expander</a><i></i></b><br/>
+<b><a href="#off_sensitive">off_sensitive</a><i></i></b><br/>
+<b><a href="#on_active">on_active</a><i></i></b><br/>
+<b><a href="#on_blinking">on_blinking</a><i></i></b><br/>
+<b><a href="#on_calendar">on_calendar</a><i></i></b><br/>
+<b><a href="#on_clicked">on_clicked</a><i></i></b><br/>
+<b><a href="#on_colorbutton">on_colorbutton</a><i></i></b><br/>
+<b><a href="#on_colorsel">on_colorsel</a><i></i></b><br/>
+<b><a href="#on_combo">on_combo</a><i></i></b><br/>
+<b><a href="#on_entry">on_entry</a><i></i></b><br/>
+<b><a href="#on_expander">on_expander</a><i></i></b><br/>
+<b><a href="#on_filechoose">on_filechoose</a><i></i></b><br/>
+<b><a href="#on_font">on_font</a><i></i></b><br/>
+<b><a href="#on_hide">on_hide</a><i></i></b><br/>
+<b><a href="#on_linkbutton">on_linkbutton</a><i></i></b><br/>
+<b><a href="#on_menu">on_menu</a><i></i></b><br/>
+<b><a href="#on_page">on_page</a><i></i></b><br/>
+<b><a href="#on_scale">on_scale</a><i></i></b><br/>
+<b><a href="#on_sensitive">on_sensitive</a><i></i></b><br/>
+<b><a href="#on_show">on_show</a><i></i></b><br/>
+<b><a href="#on_spinbutton">on_spinbutton</a><i></i></b><br/>
+<b><a href="#on_toggled">on_toggled</a><i></i></b><br/>
+<b><a href="#on_treeview">on_treeview</a><i></i></b><br/>
+<b><a href="#page_next">page_next</a><i></i></b><br/>
+<b><a href="#page_prev">page_prev</a><i></i></b><br/>
+<b><a href="#press_event">press_event</a><i></i></b><br/>
+<b><a href="#redim_term">redim_term</a><i></i></b><br/>
+<b><a href="#release_event">release_event</a><i></i></b><br/>
+<b><a href="#select_bottom">select_bottom</a><i></i></b><br/>
+<b><a href="#select_down">select_down</a><i></i></b><br/>
+<b><a href="#select_top">select_top</a><i></i></b><br/>
+<b><a href="#select_up">select_up</a><i></i></b><br/>
+<b><a href="#systray_hide">systray_hide</a><i></i></b><br/>
+<b><a href="#systray_show">systray_show</a><i></i></b><br/>
+<b><a href="#toggle_active">toggle_active</a><i></i></b><br/>
+<b><a href="#toggle_expander">toggle_expander</a><i></i></b><br/>
+<b><a href="#toggle_sensitive">toggle_sensitive</a><i></i></b><br/>
+<b><a href="#toggle_visible">toggle_visible</a><i></i></b>
+</div>
+<br>
+<br>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="auto_scale"></a><b>auto_scale</b><i></i>
+    <div class="text">when the widget size is modified
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: scale@width height<br/>
+py: ('scale', width, height)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="auto_scale_img"></a><b>auto_scale_img</b><i></i>
+    <div class="text">changes the size of a picture according to its container
+    </div>
+    <div class="info">put the image in a box and connect the signal<br/>
+signal: size-allocate, user data: image
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: img_scale="width height"<br/>
+py: img_scale = (width, height)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="clear_entry"></a><b>clear_entry</b><i></i>
+    <div class="text">delete the text of an entry
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="clic_droit"></a><b>clic_droit</b><i></i>
+    <div class="text">when right click
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">clic_droit
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="double_clic"></a><b>double_clic</b><i></i>
+    <div class="text">the treeview selection
+    </div>
+    <div class="info">signal: row-activated
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: double_clic@line@data<br/>
+py: ((path), [row selected,], 'double_clic')
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="drag_data_get"></a><b>drag_data_get</b><i></i>
+    <div class="text">The treeview can drag selection
+    </div>
+    <div class="info">add this to drag-data-get signal
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="drag_data_received"></a><b>drag_data_received</b><i></i>
+    <div class="text">The treeview can received drag selection
+    </div>
+    <div class="info"> add this to drag-data-received signal
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="drag_drop"></a><b>drag_drop</b><i></i>
+    <div class="text">Used for drop in a widget
+    </div>
+    <div class="info"> add this to drag-drop signal
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: drop@text/row<br/>
+py: ('drop', text/row)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="enter_notify_event"></a><b>enter_notify_event</b><i></i>
+    <div class="text">when the cursor enters above a widget
+    </div>
+    <div class="info">signal: enter-notify-event
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">enter_notify_event
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="expander_cb"></a><b>expander_cb</b><i></i>
+    <div class="text">action on expander
+    </div>
+    <div class="info">signal: activate
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">True or False
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="get_pointer"></a><b>get_pointer</b><i></i>
+    <div class="text">Curseur location in the widget
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: pointer@x y<br/>
+py: ('pointer', x, y)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="gtk_widget_destroy"></a><b>gtk_widget_destroy</b><i></i>
+    <div class="text">equivalent to EXIT@@, e.g. to be used for closing via the cross
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="gtk_widget_destroy_save"></a><b>gtk_widget_destroy_save</b><i></i>
+    <div class="text">equivalent to EXIT@@SAVE
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="key_press"></a><b>key_press</b><i></i>
+    <div class="text">press a key
+    </div>
+    <div class="info">signal: key_ press_event
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: press@key<br/>
+py: (press, key)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="key_release"></a><b>key_release</b><i></i>
+    <div class="text">release a key
+    </div>
+    <div class="info">signal: key_ release_event
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: release@key<br/>
+py: release, key
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="kill_term_child"></a><b>kill_term_child</b><i></i>
+    <div class="text">kills the process launched in terminal
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="leave_notify_event"></a><b>leave_notify_event</b><i></i>
+    <div class="text">when the cursor goes out a widget
+    </div>
+    <div class="info">signal: leave_notify_event
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">leave_notify_event
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="my_callback"></a><b>my_callback</b><i></i>
+    <div class="text">can be used for any widget
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">my_callback
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="off_active"></a><b>off_active</b><i></i>
+    <div class="text">toggle deactivate
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="off_blinking"></a><b>off_blinking</b><i></i>
+    <div class="text">stops notify icon blinking
+    </div>
+    <div class="info">only availble with 'systray' name choosed
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="off_expander"></a><b>off_expander</b><i></i>
+    <div class="text">close the expander
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="off_sensitive"></a><b>off_sensitive</b><i></i>
+    <div class="text">widget becomes grey
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_active"></a><b>on_active</b><i></i>
+    <div class="text">toggle activate
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_blinking"></a><b>on_blinking</b><i></i>
+    <div class="text">starts notify icon blinking
+    </div>
+    <div class="info">only availble with 'systray' name choosed
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_calendar"></a><b>on_calendar</b><i></i>
+    <div class="text">the chosen date
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">(year, month, day)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_clicked"></a><b>on_clicked</b><i></i>
+    <div class="text">can be used for any widget
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">clicked
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_colorbutton"></a><b>on_colorbutton</b><i></i>
+    <div class="text">the chosen colour
+    </div>
+    <div class="info">signal: color-set
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_colorsel"></a><b>on_colorsel</b><i></i>
+    <div class="text">to be filled in for the colorselectiondialog, colorsel­color_selection
+    </div>
+    <div class="info">signal: color-changed
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">couleur (#FFEEFF)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_combo"></a><b>on_combo</b><i></i>
+    <div class="text">the combobox selection
+    </div>
+    <div class="info">signal: changed
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">selection
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_entry"></a><b>on_entry</b><i></i>
+    <div class="text">the entry text, or click on primary or secondary icon
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: text or primary@text or secondary@text<br/>
+py: (arg, text)<br/>
+arg = '' or 'primary' or 'secondary'
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_expander"></a><b>on_expander</b><i></i>
+    <div class="text">expand the expander
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_filechoose"></a><b>on_filechoose</b><i></i>
+    <div class="text">the filechooser selection
+    </div>
+    <div class="info">signal: selection-changed
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">selected file
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_font"></a><b>on_font</b><i></i>
+    <div class="text">the chosen font
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">pangoFontDescription
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_hide"></a><b>on_hide</b><i></i>
+    <div class="text">hide a widget
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_linkbutton"></a><b>on_linkbutton</b><i></i>
+    <div class="text">web link
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">http://...
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_menu"></a><b>on_menu</b><i></i>
+    <div class="text">launch contextmenu
+    </div>
+    <div class="info">the widget menu must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_page"></a><b>on_page</b><i></i>
+    <div class="text">Displays a page of the notebook
+    </div>
+    <div class="info">the page must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_scale"></a><b>on_scale</b><i></i>
+    <div class="text">when the cursor moves
+    </div>
+    <div class="info">signal: value-changed
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">(0 to 100)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_sensitive"></a><b>on_sensitive</b><i></i>
+    <div class="text">widget stops being grey
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_show"></a><b>on_show</b><i></i>
+    <div class="text">display a widget
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_spinbutton"></a><b>on_spinbutton</b><i></i>
+    <div class="text">the spinbutton value
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">value (1.0)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_toggled"></a><b>on_toggled</b><i></i>
+    <div class="text">the status of a check/radio/togglebutton
+    </div>
+    <div class="info">signal: toggled
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">True or False
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="on_treeview"></a><b>on_treeview</b><i></i>
+    <div class="text">the treeview selection
+    </div>
+    <div class="info">signal: cursor-changed
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: line@data<br/>
+py: ((path), [row selected,])
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="page_next"></a><b>page_next</b><i></i>
+    <div class="text">Displays next page of the notebook
+    </div>
+    <div class="info">the notebook must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="page_prev"></a><b>page_prev</b><i></i>
+    <div class="text">Displays previous page of the notebook
+    </div>
+    <div class="info">the notebook must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="press_event"></a><b>press_event</b><i></i>
+    <div class="text">can be used for any widget
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">press_event
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="redim_term"></a><b>redim_term</b><i></i>
+    <div class="text">Auto resize VTE terminal
+    </div>
+    <div class="info">see <a href="options.html#--terminal-redim">--terminal-redim</a> option
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="release_event"></a><b>release_event</b><i></i>
+    <div class="text">can be used for any widget
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">release_event
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="select_bottom"></a><b>select_bottom</b><i></i>
+    <div class="text">push down the selected line in last position
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="select_down"></a><b>select_down</b><i></i>
+    <div class="text">push down the selected line
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="select_top"></a><b>select_top</b><i></i>
+    <div class="text">push up the selected line in first position
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="select_up"></a><b>select_up</b><i></i>
+    <div class="text">push up the selected line
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="systray_hide"></a><b>systray_hide</b><i></i>
+    <div class="text">hide the systray
+    </div>
+    <div class="info">only availble with 'systray' name choosed
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="systray_show"></a><b>systray_show</b><i></i>
+    <div class="text">display the systray
+    </div>
+    <div class="info">only availble with 'systray' name choosed
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="toggle_active"></a><b>toggle_active</b><i></i>
+    <div class="text">toggle between activate/deactivate
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="toggle_expander"></a><b>toggle_expander</b><i></i>
+    <div class="text">change the expander state
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="toggle_sensitive"></a><b>toggle_sensitive</b><i></i>
+    <div class="text">toggle between grey/not-grey
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="toggle_visible"></a><b>toggle_visible</b><i></i>
+    <div class="text">toggle between show/hide
+    </div>
+    <div class="info">the widget must be indicated in the user data
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+<br>
+<br>
+<hr>
+<!-- FOOTER -->
+<table style="width:100%;" summary="Navigation header">
+<tbody>
+<tr>
+<td class="align_left"><a href="principe.html">Prev</a></td>
+<td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+<td class="align_right"><a href="commandes.html">Next</a></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

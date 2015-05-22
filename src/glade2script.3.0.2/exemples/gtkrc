@@ -1,0 +1,24 @@
+style "defaut"
+{
+
+fg[NORMAL] = "#161616"
+bg[NORMAL] = "#CACACA"
+fg[SELECTED] = "#F5F5F5"
+bg[SELECTED] = "#6789C9"
+fg[PRELIGHT] = "#FFFFFF"  #"#FF890C"
+bg[PRELIGHT] = "#ADADAD"
+fg[ACTIVE] = "#FF0207"
+bg[ACTIVE] = "#FF8C1C"
+
+base[NORMAL] = "#1b3d7d"
+base[SELECTED] = "#6789C9"
+base[ACTIVE] = "#6789C9"
+text[NORMAL] = "#ffffff"
+text[SELECTED] = "#ffffff"
+text[PRELIGHT] = "#ADADAD"
+GtkScrollbar::slider_width = 8
+engine "industrial" {
+}
+}
+class "*" style "defaut"
+

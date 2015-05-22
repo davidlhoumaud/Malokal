@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Glade2script Reference Manual</title>
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+</head>
+<body>
+
+<table style="width:100%;">
+<tbody>
+<tr>
+<td></td>
+<th class="align_center">&nbsp;</th>
+<td></td>
+</tr>
+<tr>
+<td class="align_left">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td class="align_center"><b>Glade2script Reference</b></td>
+<td class="align_right"><a href="principe.html">Next</a></td>
+</tr>
+</tbody>
+</table>
+
+
+<br>
+<hr><br>
+<h1>Glade2script Reference Manual</h1>
+<h3>AnsuzPeorth</h3>
+&lt;ansuzpeorth@gmail.com&gt;
+
+<p>Copyright © 2010-2012 <i>GNU Free Documentation License</i></p>
+<p>Janvier 2012 for version 2.3.1 et 3.O.1</p>
+<br>
+<br>
+<h5>Abstract</h5>
+<div>Manage glade UI from bash, python script or others langage</div>
+<br><hr>
+<p><b>Table of Contents</b></p>
+
+<a href="principe.html">Principe</a><br>
+<div class="left40p">
+	<a href="principe.html#Petit_exemple">Small exemple</a><br>
+	<a href="principe.html#precautions">Some precautions</a>
+</div>
+<br>
+
+<a href="callbacks.html">Gtk signals and callbacks</a><br>
+<div class="left40p">
+<a href="callbacks.html#auto_scale">auto_scale</a><br/>
+<a href="callbacks.html#auto_scale_img">auto_scale_img</a><br/>
+<a href="callbacks.html#clear_entry">clear_entry</a><br/>
+<a href="callbacks.html#clic_droit">clic_droit</a><br/>
+<a href="callbacks.html#double_clic">double_clic</a><br/>
+<a href="callbacks.html#enter_notify_event">enter_notify_event</a><br/>
+<a href="callbacks.html#expander_cb">expander_cb</a><br/>
+<a href="callbacks.html#get_pointer">get_pointer</a><br/>
+<a href="callbacks.html#gtk_widget_destroy">gtk_widget_destroy</a><br/>
+<a href="callbacks.html#gtk_widget_destroy_save">gtk_widget_destroy_save</a><br/>
+<a href="callbacks.html#key_press">key_press</a><br/>
+<a href="callbacks.html#key_release">key_release</a><br/>
+<a href="callbacks.html#kill_term_child">kill_term_child</a><br/>
+<a href="callbacks.html#leave_notify_event">leave_notify_event</a><br/>
+<a href="callbacks.html#my_callback">my_callback</a><br/>
+<a href="callbacks.html#off_active">off_active</a><br/>
+<a href="callbacks.html#off_blinking">off_blinking</a><br/>
+<a href="callbacks.html#off_expander">off_expander</a><br/>
+<a href="callbacks.html#off_sensitive">off_sensitive</a><br/>
+<a href="callbacks.html#on_active">on_active</a><br/>
+<a href="callbacks.html#on_blinking">on_blinking</a><br/>
+<a href="callbacks.html#on_calendar">on_calendar</a><br/>
+<a href="callbacks.html#on_clicked">on_clicked</a><br/>
+<a href="callbacks.html#on_colorbutton">on_colorbutton</a><br/>
+<a href="callbacks.html#on_colorsel">on_colorsel</a><br/>
+<a href="callbacks.html#on_combo">on_combo</a><br/>
+<a href="callbacks.html#on_entry">on_entry</a><br/>
+<a href="callbacks.html#on_expander">on_expander</a><br/>
+<a href="callbacks.html#on_filechoose">on_filechoose</a><br/>
+<a href="callbacks.html#on_font">on_font</a><br/>
+<a href="callbacks.html#on_hide">on_hide</a><br/>
+<a href="callbacks.html#on_linkbutton">on_linkbutton</a><br/>
+<a href="callbacks.html#on_menu">on_menu</a><br/>
+<a href="callbacks.html#on_page">on_page</a><br/>
+<a href="callbacks.html#on_scale">on_scale</a><br/>
+<a href="callbacks.html#on_sensitive">on_sensitive</a><br/>
+<a href="callbacks.html#on_show">on_show</a><br/>
+<a href="callbacks.html#on_spinbutton">on_spinbutton</a><br/>
+<a href="callbacks.html#on_toggled">on_toggled</a><br/>
+<a href="callbacks.html#on_treeview">on_treeview</a><br/>
+<a href="callbacks.html#page_next">page_next</a><br/>
+<a href="callbacks.html#page_prev">page_prev</a><br/>
+<a href="callbacks.html#press_event">press_event</a><br/>
+<a href="callbacks.html#release_event">release_event</a><br/>
+<a href="callbacks.html#select_bottom">select_bottom</a><br/>
+<a href="callbacks.html#select_down">select_down</a><br/>
+<a href="callbacks.html#select_top">select_top</a><br/>
+<a href="callbacks.html#select_up">select_up</a><br/>
+<a href="callbacks.html#systray_hide">systray_hide</a><br/>
+<a href="callbacks.html#systray_show">systray_show</a><br/>
+<a href="callbacks.html#toggle_active">toggle_active</a><br/>
+<a href="callbacks.html#toggle_expander">toggle_expander</a><br/>
+<a href="callbacks.html#toggle_sensitive">toggle_sensitive</a><br/>
+<a href="callbacks.html#toggle_visible">toggle_visible</a></div>
+<br>
+
+
+<a href="commandes.html">glade2script commands</a><br>
+<div class="left40p">
+<a href="commandes.html#APPINDICATOR">APPINDICATOR@@</a><br/>
+<a href="commandes.html#CLIPGET">CLIP@@GET</a><br/>
+<a href="commandes.html#CLIPSET">CLIP@@SET</a><br/>
+<a href="commandes.html#COLOR">COLOR@@</a><br/>
+<a href="commandes.html#COMBOCLEAR">COMBO@@CLEAR</a><br/>
+<a href="commandes.html#COMBODELEND">COMBO@@DELEND</a><br/>
+<a href="commandes.html#COMBOEND">COMBO@@END</a><br/>
+<a href="commandes.html#COMBOFINDDEL">COMBO@@FINDDEL</a><br/>
+<a href="commandes.html#COMBOFINDSELECT">COMBO@@FINDSELECT</a><br/>
+<a href="commandes.html#COMBOIMG">COMBO@@IMG</a><br/>
+<a href="commandes.html#EXIT">EXIT@@</a><br/>
+<a href="commandes.html#EXITSAVE">EXIT@@SAVE</a><br/>
+<a href="commandes.html#FILESETFILTER">FILE@@FILTER</a><br/>
+<a href="commandes.html#GEOGET">GEO@@GET</a><br/>
+<a href="commandes.html#GEOSET">GEO@@SET</a><br/>
+<a href="commandes.html#GET">GET@</a><br/>
+<a href="commandes.html#GTKRC">GTKRC@@</a><br/>
+<a href="commandes.html#IMG">IMG@@</a><br/>
+<a href="commandes.html#ISACTIVE">ISACTIVE@@</a><br/>
+<a href="commandes.html#ITER">ITER@@</a><br/>
+<a href="commandes.html#MAKEMENU">MAKEMENU@@</a><br/>
+<a href="commandes.html#MULTIGET">MULTI@@GET</a><br/>
+<a href="commandes.html#MULTISET">MULTI@@SET</a><br/>
+<a href="commandes.html#NOTIFY">NOTIFY@@</a><br/>
+<a href="commandes.html#PLUGINCMD">PLUGIN@@CMD</a><br/>
+<a href="commandes.html#PLUGININIT">PLUGIN@@INIT</a><br/>
+<a href="commandes.html#POINTERSTART">POINTER@@START</a><br/>
+<a href="commandes.html#POINTERSTOP">POINTER@@STOP</a><br/>
+<a href="commandes.html#SCREEN">SCREEN@@</a><br/>
+<a href="commandes.html#SET">SET@</a><br/>
+<a href="commandes.html#STATUS">STATUS@@</a><br/>
+<a href="commandes.html#SUBMENU">SUBMENU@@</a><br/>
+<a href="commandes.html#SYSTRAY">SYSTRAY@@</a><br/>
+<a href="commandes.html#TERMFONT">TERM@@FONT</a><br/>
+<a href="commandes.html#TERMKILL">TERM@@KILL</a><br/>
+<a href="commandes.html#TERMSEND">TERM@@SEND</a><br/>
+<a href="commandes.html#TERMWRITE">TERM@@WRITE</a><br/>
+<a href="commandes.html#TEXTAG">TEXT@@TAG</a><br/>
+<a href="commandes.html#TEXTAUTOUR">TEXT@@AUTOUR</a><br/>
+<a href="commandes.html#TEXTAUTOURTAG">TEXT@@AUTOURTAG</a><br/>
+<a href="commandes.html#TEXTCLEAR">TEXT@@CLEAR</a><br/>
+<a href="commandes.html#TEXTCREATETAG">TEXT@@CREATETAG</a><br/>
+<a href="commandes.html#TEXTCURSOR">TEXT@@CURSOR</a><br/>
+<a href="commandes.html#TEXTCURSORTAG">TEXT@@CURSORTAG</a><br/>
+<a href="commandes.html#TEXTDELEND">TEXT@@DELEND</a><br/>
+<a href="commandes.html#TEXTDELTAG">TEXT@@DELTAG</a><br/>
+<a href="commandes.html#TEXTEND">TEXT@@END</a><br/>
+<a href="commandes.html#TEXTENDTAG">TEXT@@ENDTAG</a><br/>
+<a href="commandes.html#TEXTFIND">TEXT@@FIND</a><br/>
+<a href="commandes.html#TEXTHIZO">TEXT@@HIZO</a><br/>
+<a href="commandes.html#TEXTHIZOTAG">TEXT@@HIZOTAG</a><br/>
+<a href="commandes.html#TEXTLOAD">TEXT@@LOAD</a><br/>
+<a href="commandes.html#TEXTRSELECT">TEXT@@RSELECT</a><br/>
+<a href="commandes.html#TEXTRSELECTTAG">TEXT@@RSELECTTAG</a><br/>
+<a href="commandes.html#TEXTSAVE">TEXT@@SAVE</a><br/>
+<a href="commandes.html#TEXTSELECTTAG">TEXT@@SELECTTAG</a><br/>
+<a href="commandes.html#TEXTSOURCELANG">TEXT@@SOURCE@@LANG</a><br/>
+<a href="commandes.html#TEXTSOURCESTYLE">TEXT@@SOURCE@@STYLE</a><br/>
+<a href="commandes.html#TIMERSTART">TIMER@@START</a><br/>
+<a href="commandes.html#TIMERSTOP">TIMER@@STOP</a><br/>
+<a href="commandes.html#TOGGLEACTIVE">TOGGLE@@ACTIVE</a><br/>
+<a href="commandes.html#TOGGLEEXPANDER">TOGGLE@@EXPANDER</a><br/>
+<a href="commandes.html#TOGGLESENSITIVE">TOGGLE@@SENSITIVE</a><br/>
+<a href="commandes.html#TOGGLEVISIBLE">TOGGLE@@VISIBLE</a><br/>
+<a href="commandes.html#TREEBOTTOM">TREE@@BOTTOM</a><br/>
+<a href="commandes.html#TREECELL">TREE@@CELL</a><br/>
+<a href="commandes.html#TREECLEAR">TREE@@CLEAR</a><br/>
+<a href="commandes.html#TREEDOWN">TREE@@DOWN</a><br/>
+<a href="commandes.html#TREEEND">TREE@@END</a><br/>
+<a href="commandes.html#TREEFIND">TREE@@FIND</a><br/>
+<a href="commandes.html#TREEFINDDEL">TREE@@FINDDEL</a><br/>
+<a href="commandes.html#TREEFINDSELECT">TREE@@FINDSELECT</a><br/>
+<a href="commandes.html#TREEFORCE_SELECT">TREE@@FORCE_SELECT</a><br/>
+<a href="commandes.html#TREEGET">TREE@@GET</a><br/>
+<a href="commandes.html#TREEHIZO">TREE@@HIZO</a><br/>
+<a href="commandes.html#TREEIMG">TREE@@IMG</a><br/>
+<a href="commandes.html#TREEINSERT">TREE@@INSERT</a><br/>
+<a href="commandes.html#TREELOAD">TREE@@LOAD</a><br/>
+<a href="commandes.html#TREEPROG">TREE@@PROG</a><br/>
+<a href="commandes.html#TREESAVE">TREE@@SAVE</a><br/>
+<a href="commandes.html#TREESELECT">TREE@@SELECT</a><br/>
+<a href="commandes.html#TREETOP">TREE@@TOP</a><br/>
+<a href="commandes.html#TREEUP">TREE@@UP</a><br/>
+<a href="commandes.html#WEBKITCACHE">WEBKIT@@CACHE</a><br/>
+<a href="commandes.html#WEBKITDISCONNECT">WEBKIT@@DISCONNECT</a><br/>
+<a href="commandes.html#WEBKITDOWNLOAD">WEBKIT@@DOWNLOAD</a><br/>
+<a href="commandes.html#WEBKITJSFILE">WEBKIT@@JSFILE</a><br/>
+<a href="commandes.html#WEBKITLINKFILTER">WEBKIT@@LINKFILTER</a><br/>
+<a href="commandes.html#WEBKITLOAD">WEBKIT@@LOAD</a><br/>
+<a href="commandes.html#WEBKITLOADED">WEBKIT@@LOADED</a><br/>
+<a href="commandes.html#WEBKITMENU">WEBKIT@@MENU</a><br/>
+<a href="commandes.html#WEBKITOVERLINK">WEBKIT@@OVERLINK</a><br/>
+<a href="commandes.html#WEBKITREQUEST">WEBKIT@@REQUEST</a><br/>
+<a href="commandes.html#WEBKITSAVE">WEBKIT@@SAVE</a><br/>
+<a href="commandes.html#WEBKITSUBMENU">WEBKIT@@SUBMENU</a><br/>
+<a href="commandes.html#WINDOWBACKGROUND">WINDOW@@BACKGROUND</a><br/>
+<a href="commandes.html#WINDOWTRANS">WINDOW@@TRANS</a></div>
+<br>
+
+<a href="pygtk.html">pyGTK commands</a>
+<br>
+<br>
+
+<a href="options.html">Options / arguments</a>
+<div class="left40p">
+<a href="options.html#clipboard">--clipboard</a><br/>
+<a href="options.html#combobox">--combobox</a><br/>
+<a href="options.html#debug">-d / --debug</a><br/>
+<a href="options.html#embed">--embed</a><br/>
+<a href="options.html#glade">-g / --glade</a><br/>
+<a href="options.html#gtkbuilder">--gtkbuilder</a><br/>
+<a href="options.html#gtkrc">--gtkrc</a><br/>
+<a href="options.html#help">-h / --help</a><br/>
+<a href="options.html#import_">--import</a><br/>
+<a href="options.html#infobulle">--infobulle</a><br/>
+<a href="options.html#libglade">--libglade</a><br/>
+<a href="options.html#locale">--locale</a><br/>
+<a href="options.html#retour">-r / --retour</a><br/>
+<a href="options.html#sh">-s / --sh</a><br/>
+<a href="options.html#sourceview">--sourceview</a><br/>
+<a href="options.html#systray">--systray</a><br/>
+<a href="options.html#term_font">--terminal-font</a><br/>
+<a href="options.html#term_redim">--terminal-redim</a><br/>
+<a href="options.html#terminal">--terminal</a><br/>
+<a href="options.html#transparent">--transparent</a><br/>
+<a href="options.html#tree">-t / --tree</a><br/>
+<a href="options.html#webcache">--webcache</a><br/>
+<a href="options.html#webdownload">--webdownload</a><br/>
+<a href="options.html#webkit">--webkit</a><br/>
+<a href="options.html#weblinkfilter">--weblinkfilter</a><br/>
+<a href="options.html#webloaded">--webloaded</a><br/>
+<a href="options.html#webmenu">--webmenu</a><br/>
+<a href="options.html#weboverlink">--weboverlink</a><br/>
+<a href="options.html#webrequest">--webrequest</a><br/>
+<a href="options.html#websubmenu">--websubmenu</a></div>
+<br>
+
+<a href="associe.html">Associated script</a><br>
+<br>
+<a href="traduire.html">Translate application</a><br>
+<br>
+<a href="gtk-widget-reference.html">Gtk Widget Reference</a><br>
+<div class="left40p">
+<a href="calendar.html">Gtk.Calendar</a><br>
+<a href="color.html">Gtk.Color</a><br>
+<a href="combo.html">Gtk.Combo*</a><br>
+<a href="entry.html">Gtk.Entry</a><br>
+<a href="eventbox.html">Gtk.EvenBox</a><br>
+<a href="filechooser.html">Gtk.FileChooser*</a><br>
+<a href="font.html">Gtk.Font*</a><br>
+<a href="image.html">Gtk.image</a><br>
+<a href="label.html">Gtk.Label</a><br>
+<a href="menu.html">Gtk.Menu</a><br>
+<a href="progressbar.html">Gtk.ProgressBar</a><br>
+<a href="scale.html">Gtk.ScaleButton</a><br>
+<a href="spin.html">Gtk.SpinButton</a><br>
+<a href="statusbar.html">Gtk.StatusBar</a><br>
+<a href="statusicon.html">Gtk.StatusIcon</a><br>
+<a href="textview.html">Gtk.TextView</a><br>
+<a href="toggle.html">Gtk.ToggleButton*</a><br>
+<a href="treeview.html">Gtk.TreeView</a><br>
+<a href="window.html">Gtk.Window</a><br>
+</div>
+<br>
+<hr>
+<table style="width:100%;">
+<tbody>
+<tr>
+<td class="align_left">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td class="align_center"><b>Glade2script Reference</b></td>
+<td class="align_right"><a href="principe.html">Next</a></td>
+</tr>
+</tbody>
+</table>
+
+</body></html>

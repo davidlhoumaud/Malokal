@@ -1,0 +1,58 @@
+<b>auto_scale</b>|sh: scale@width height -- py: ('scale', width, height)|
+<b>auto_scale_img</b>|sh: img_scale="width height" -- py: img_scale = (width, height)|
+<b>clear_entry</b>||
+<b>clic_droit</b>|clic_droit|
+<b>double_clic</b>|sh: double_clic@line@data -- py: ((path), [row selected,], 'double_clic')|
+<b>drag_data_get</b>||
+<b>drag_data_received</b>||
+<b>drag_drop</b>|sh: drop@text/row -- py: ('drop', text/row)|
+<b>enter_notify_event</b>|enter_notify_event|
+<b>expander_cb</b>|True or False|
+<b>get_pointer</b>|sh: pointer@x y -- py: ('pointer', x, y)|
+<b>gtk_widget_destroy</b>||
+<b>gtk_widget_destroy_save</b>||
+<b>key_press</b>|sh: press@key -- py: (press, key)|
+<b>key_release</b>|sh: release@key -- py: release, key|
+<b>kill_term_child</b>||
+<b>leave_notify_event</b>|leave_notify_event|
+<b>my_callback</b>|my_callback|
+<b>off_active</b>||
+<b>off_blinking</b>||
+<b>off_expander</b>||
+<b>off_sensitive</b>||
+<b>on_active</b>||
+<b>on_blinking</b>||
+<b>on_calendar</b>|(year, month, day)|
+<b>on_clicked</b>|clicked|
+<b>on_colorbutton</b>||
+<b>on_colorsel</b>|couleur (#FFEEFF)|
+<b>on_combo</b>|selection|
+<b>on_entry</b>|sh: text or primary@text or secondary@text -- py: (arg, text) -- arg = '' or 'primary' or 'secondary'|
+<b>on_expander</b>||
+<b>on_filechoose</b>|selected file|
+<b>on_font</b>|pangoFontDescription|
+<b>on_hide</b>||
+<b>on_linkbutton</b>|http://...|
+<b>on_menu</b>||
+<b>on_page</b>||
+<b>on_scale</b>|(0 to 100)|
+<b>on_sensitive</b>||
+<b>on_show</b>||
+<b>on_spinbutton</b>|value (1.0)|
+<b>on_toggled</b>|True or False|
+<b>on_treeview</b>|sh: line@data -- py: ((path), [row selected,])|
+<b>page_next</b>||
+<b>page_prev</b>||
+<b>press_event</b>|press_event|
+<b>redim_term</b>||
+<b>release_event</b>|release_event|
+<b>select_bottom</b>||
+<b>select_down</b>||
+<b>select_top</b>||
+<b>select_up</b>||
+<b>systray_hide</b>||
+<b>systray_show</b>||
+<b>toggle_active</b>||
+<b>toggle_expander</b>||
+<b>toggle_sensitive</b>||
+<b>toggle_visible</b>||

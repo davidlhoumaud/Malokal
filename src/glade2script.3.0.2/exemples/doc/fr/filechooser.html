@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+  <title>Gtk.FileChooser*</title>
+</head>
+<body>
+<!-- HEADER -->
+<table style="width:100%;" summary="Navigation header">
+  <tbody>
+  <tr>
+    <td></td>
+    <th class="align_center">Gtk.FileChooser*</th>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="align_left"><a href="eventbox.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="font.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+<br>
+<hr>
+<br>
+
+<h2>Gtk.FileChooser*</h2>
+<p>Gtk.FileChooserButton - Gtk.FileChooserDialog -&nbsp;Gtk.FileChooserWidget</p>
+
+<br>
+<br>
+<br>
+<br>
+
+<h3>Commandes pyGtk</h3>
+<pre class="bleu">Les plus utilisées:<br> <code class="methodsynopsis"><span class="methodname"><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkfilechooser.html#method-gtkfilechooser--get-filename" title="gtk.FileChooser.get_filename">get_filename</a></span>(<span class="methodparam"></span>)</code> <br> <code class="methodsynopsis"><span class="methodname"><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkfilechooser.html#method-gtkfilechooser--set-filename" title="gtk.FileChooser.set_filename">set_filename</a></span>(<span class="methodparam"><span class="parameter"><strong class="parameter"><code>filename</code></strong></span></span>)</code> <br> <code class="methodsynopsis"><span class="methodname"><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkfilechooser.html#method-gtkfilechooser--set-current-folder" title="gtk.FileChooser.set_current_folder">set_current_folder</a></span>(<span class="methodparam"><span class="parameter"><strong class="parameter"><code>filename</code></strong></span></span>)</code> <br> <code class="methodsynopsis"><span class="methodname"><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkfilechooser.html#method-gtkfilechooser--get-current-folder" title="gtk.FileChooser.get_current_folder">get_current_folder</a></span>(<span class="methodparam"></span>)</code> <br><br>Documentation pyGtk: <span class="refentrytitle"><a href="/usr/share/gtk-doc/html/pygtk/class-gtkfilechooser.html">gtk.FileChooser</a></span>  <span class="refentrytitle"><a href="/usr/share/gtk-doc/html/pygtk/class-gtkfilechooserdialog.html">gtk.FileChooserDialog</a></span>  <span class="refentrytitle"><a href="/usr/share/gtk-doc/html/pygtk/class-gtkfilechooserwidget.html">gtk.FileChooserWidget</a></span> 
+</pre>
+
+<br>
+<br>
+<br>
+
+<h3>Commandes glade2script</h3>
+<div id="top">
+</div>
+
+<br>
+<br>
+<br>
+
+<h3>Callbacks</h3>
+<div class="orange"><a href="signaux.html#on_filechoose">on_filechoose</a>
+</div>
+
+
+<br>
+<br>
+<br>
+
+<h3>Signaux</h3>
+<div class="orange">
+"<a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkfilechooser.html#signal-gtkfilechooser--current-folder-changed" title="The &quot;current-folder-changed&quot; gtk.FileChooser Signal">current-folder-changed</a>"<br>
+"<a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkfilechooser.html#signal-gtkfilechooser--file-activated" title="The &quot;file-activated&quot; gtk.FileChooser Signal">file-activated</a>"<br>
+"<a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkfilechooser.html#signal-gtkfilechooser--selection-changed" title="The &quot;selection-changed&quot; gtk.FileChooser Signal">selection-changed</a>"<br>
+</div>
+
+<br>
+<br>
+<br>
+
+<h3>Description</h3>
+Sélection d'un fichier ou d'un dossier.<br>
+ A savoir que le filechooserbutton fonctionne uniquement pour ouvrir un fichier. Pour l'enregistrement ou la création il faut passer par le filechooserdialog.<br>
+<br>
+Précautions:<br>
+ Lorsqu'on charge le filechooser via la commande set_filename et que le callback on_filechoose est renseigné sur le signal selection_changed, la fonction sera appelé 2 fois, une première fois avec  le  dirname de  l'URI envoyé, et la seconde avec la bonne URI.<br>
+
+ Pour contourner ce problème, 2 solutions:<br>
+    - En posant un flag en début de fonction.<br>
+       Si on ne charge qu'une seule fois l'URI:<br>
+<pre class="content_boite">
+n=0
+_filechooser1()
+{
+    [[ "$n" == "0" ]] && n=1 && return
+    ...
+}
+</pre>
+       Si on charge plusieurs fois l'URI:       
+<pre class="content_boite">
+_filechooser1()
+{
+    [[ ${hizo} ]] && unset hizo || { hizo=yes; return; }
+    ...
+}
+</pre>
+   - En utilisant différement les callbacks et signaux:<br>
+      Utiliser les boutons de la FilchooserDialog, signal <i>file_set</i>.<br>
+      Pour le FileChooserButton c'est moins évident, si on a besoin de récupérer l'URI dès la sélection dans le menu déroulant, il faudra passer par les flags, sinon ajouter un bouton qui lui, sera connecté au callback  <i>on_filechoose</i>, renseigner <i>user-data</i> avec  le widget FilchooserButton. 
+<br>
+<br>
+<br>
+<br>
+
+<hr>
+<br>
+
+<table style="width:100%;">
+  <tbody>
+  <tr>
+    <td class="align_left"><a href="eventbox.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="font.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+</body></html>

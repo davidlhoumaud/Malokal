@@ -1,0 +1,115 @@
+VERSION="glade2script 2.3.0, Copyright (C) 2010-2011, November 2011"
+[[ GTK LIB ]] ==> GtkBuilder > locale
+[[ WIDGETS ]] ====>>>> window1
+[[ WIDGETS ]] ====>>>> _filechooserbutton1
+[[ WIDGETS ]] ====>>>> _drawingarea1
+[[ WIDGETS ]] ====>>>> _label_audio_info
+[[ WIDGETS ]] ====>>>> _label_video_info
+[[ WIDGETS ]] ====>>>> _label_retour_cmd
+[[ WIDGETS ]] ====>>>> _entry_cmd
+[[ WIDGETS ]] ====>>>> _entry_arg
+[[ WIDGETS ]] ====>>>> btn_cmd
+[[ WIDGETS ]] ====>>>> btn_prop
+[[ WIDGETS ]] ====>>>> _hscale1
+[[ WIDGETS ]] ====>>>> btn_stop
+[[ WIDGETS ]] ====>>>> image2
+[[ WIDGETS ]] ====>>>> btn_pause
+[[ WIDGETS ]] ====>>>> image3
+[[ WIDGETS ]] ====>>>> btn_play
+[[ WIDGETS ]] ====>>>> image1
+[[ WIDGETS ]] ====>>>> _label_info
+[[ WIDGETS ]] ====>>>> _label_time
+=> [[ PY ]] => PLUGIN@@INIT@@g2sPluginMplayer@@MyPlayer@@_drawingarea1@@None@@ProgressPlayerCb@@None
+g2sPluginMplayer
+['-wid', '90177839']
+_ [u'MPlayer 1.0rc4-4.4.3 (C) 2000-2010 MPlayer Team']
+_ [u"get_path('codecs.conf') -> '/home/yoanne/.mplayer/codecs.conf'"]
+_ [u"get_path('fonts') -> '/home/yoanne/.mplayer/fonts'"]
+_ [u"get_path('input.conf') -> '/home/yoanne/.mplayer/input.conf'"]
+=> [[ PY ]] => :: FIFO write :: _filechooserbutton1 /home/yoanne/domino-sagacrew-sample.avi
+=> [[ PY ]] => DEBUG=> in bash NOT GET _filechooserbutton1 /home/yoanne/domino-sagacrew-sample.avi
+=> [[ PY ]] => :: FIFO write :: btn_play clicked
+=> [[ PY ]] => DEBUG=> in bash NOT GET btn_play clicked
+=> [[ PY ]] => PLUGIN@@CMD@@MyPlayer@@loadfile('/home/yoanne/domino-sagacrew-sample.avi')
+self.player.loadfile('/home/yoanne/domino-sagacrew-sample.avi') None
+_ [u'']
+_ [u'Playing /home/yoanne/domino-sagacrew-sample.avi.']
+_ [u"get_path('sub/') -> '/home/yoanne/.mplayer/sub/'"]
+_ [u'AVI file format detected.']
+_ [u'[aviheader] Video stream found, -vid 0']
+_ [u'[aviheader] Audio stream found, -aid 1']
+_ [u'VIDEO:  [XVID]  528x384  12bpp  29.970 fps  679.4 kbps (82.9 kbyte/s)']
+_ [u'Clip info:']
+_ [u'Software: VirtualDubMod 1.5.10.2 (build 2540/release)']
+_ [u"get_path('sub/') -> '/home/yoanne/.mplayer/sub/'"]
+_ [u'==========================================================================']
+_ [u"Opening video decoder: [ffmpeg] FFmpeg's libavcodec codec family"]
+_ [u'Selected video codec: [ffodivx] vfm: ffmpeg (FFmpeg MPEG-4)']
+_ [u'==========================================================================']
+_ [u'==========================================================================']
+_ [u'Opening audio decoder: [ffmpeg] FFmpeg/libavcodec audio decoders']
+_ [u'AUDIO: 48000 Hz, 2 ch, s16le, 256.0 kbit/16.67% (ratio: 32000->192000)']
+_ [u'Selected audio codec: [ffac3] afm: ffmpeg (FFmpeg AC-3)']
+_ [u'==========================================================================']
+_ [u'AO: [pulse] 48000Hz 2ch s16le (2 bytes per sample)']
+_ [u'Starting playback...']
+_ [u'Movie-Aspect is 1.38:1 - prescaling to correct movie aspect.']
+_ [u'VO: [xv] 528x384 => 528x384 Planar YV12']
+=> [[ PY ]] => DEBUG=> in bash NOT GET MyPlayer metadata@album="None"@@comment="None"@@artist="None"@@track="None"@@title="None"@@year="None"@@genre="None"@@uri="/home/yoanne/domino-sagacrew-sample.avi"
+=> [[ PY ]] => :: FIFO write :: MyPlayer metadata@album="None"@@comment="None"@@artist="None"@@track="None"@@title="None"@@year="None"@@genre="None"@@uri="/home/yoanne/domino-sagacrew-sample.avi"
+=> [[ PY ]] => :: FIFO write :: MyPlayer mediainfo@video_decoder="[ffmpeg] FFmpeg's libavcodec codec family"@@audio_decoder="[ffmpeg] FFmpeg/libavcodec audio decoders"@@audio_output="[pulse] 48000Hz 2ch s16le (2 bytes per sample)"@@video_info=" [XVID]  528x384  12bpp  29.970 fps  679.4 kbps (82.9 kbyte/s)"@@audio_info="48000 Hz, 2 ch, s16le, 256.0 kbit/16.67% (ratio: 32000->192000)"@@audio_codec="[ffac3] afm: ffmpeg (FFmpeg AC-3)"@@video_codec="[ffodivx] vfm: ffmpeg (FFmpeg MPEG-4)"
+=> [[ PY ]] => SET@_label_info.set_text('Artist: None, Title: None')
+=> [[ PY ]] => DEBUG=> in bash NOT GET
+=> [[ PY ]] => DEBUG=> in bash NOT GET MyPlayer mediainfo@video_decoder="[ffmpeg] FFmpeg's libavcodec codec family"@@audio_decoder="[ffmpeg] FFmpeg/libavcodec audio decoders"@@audio_output="[pulse] 48000Hz 2ch s16le (2 bytes per sample)"@@video_info=" [XVID] 528x384 12bpp 29.970 fps 679.4 kbps (82.9 kbyte/s)"@@audio_info="48000 Hz, 2 ch, s16le, 256.0 kbit/16.67% (ratio: 32000->192000)"@@audio_codec="[ffac3] afm: ffmpeg (FFmpeg AC-3)"@@video_codec="[ffodivx] vfm: ffmpeg (FFmpeg MPEG-4)"
+_ [u'A:   0.1 V:   0.0 A-V:  0.018 ct:  0.000   2/  2 ??% ??% ??,?% 0 0 \x1b[J\rANS_LENGTH=58.12']
+=> [[ PY ]] => :: FIFO write :: MyPlayer starting@/home/yoanne/domino-sagacrew-sample.avi
+percent____ 10.0 10.0
+=> [[ PY ]] => :: FIFO write :: ProgressPlayerCb position@format_pos=00:00@@length=1.0@@percent=10.0@@pos=0.1@@format_length=00:01
+=> [[ PY ]] => SET@_label_audio_info.set_text('''[ffmpeg] FFmpeg/libavcodec audio decoders\n[pulse] 48000Hz 2ch s16le (2 bytes per sample)\n48000 Hz, 2 ch, s16le, 256.0 kbit/16.67% (ratio: 32000->192000)\n[ffac3] afm: ffmpeg (FFmpeg AC-3)''')
+=> [[ PY ]] => SET@_label_video_info.set_text('''[ffmpeg] FFmpeg's libavcodec codec family\n [XVID] 528x384 12bpp 29.970 fps 679.4 kbps (82.9 kbyte/s)\n[ffodivx] vfm: ffmpeg (FFmpeg MPEG-4)''')
+=> [[ PY ]] => DEBUG=> in bash NOT GET MyPlayer starting@/home/yoanne/domino-sagacrew-sample.avi
+=> [[ PY ]] => SET@window1.set_title('Playing file: /home/yoanne/domino-sagacrew-sample.avi')
+=> [[ PY ]] => DEBUG=> in bash NOT GET ProgressPlayerCb position@format_pos=00:00@@length=1.0@@percent=10.0@@pos=0.1@@format_length=00:01
+=> [[ PY ]] => SET@_hscale1.set_value(10.0)
+=> [[ PY ]] => SET@_label_time.set_text('00:00 / 00:01')
+=> [[ PY ]] => DEBUG=> in bash NOT GET
+_ [u'A:   0.1 V:   0.1 A-V: -0.003 ct: -0.003   3/  3 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.1 V:   0.1 A-V: -0.028 ct: -0.006   4/  4 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.1 V:   0.1 A-V: -0.029 ct: -0.009   5/  5 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.1 V:   0.2 A-V: -0.025 ct: -0.012   6/  6 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.2 V:   0.2 A-V: -0.025 ct: -0.014   7/  7 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.2 V:   0.2 A-V:  0.003 ct: -0.014   8/  8 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.3 V:   0.3 A-V:  0.003 ct: -0.014   9/  9 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.3 V:   0.3 A-V:  0.003 ct: -0.013  10/ 10 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.3 V:   0.3 A-V:  0.003 ct: -0.013  11/ 11 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.4 V:   0.4 A-V:  0.011 ct: -0.012  12/ 12 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.4 V:   0.4 A-V:  0.009 ct: -0.011  13/ 13 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.4 V:   0.4 A-V:  0.008 ct: -0.010  14/ 14 ??% ??% ??,?% 0 0 \x1b[J\rA:   0.5 V:   0.5 A-V:  0.008 ct: -0.010  15/ 15 ??% ??% ??,?% 0 0 \x1b[J\rANS_TIME_POSITION=0.5']
+percent____ 0.860289057123 0.86
+=> [[ PY ]] => :: FIFO write :: ProgressPlayerCb position@format_pos=00:00@@length=58.12@@percent=0.86@@pos=0.5@@format_length=00:58
+=> [[ PY ]] => DEBUG=> in bash NOT GET ProgressPlayerCb position@format_pos=00:00@@length=58.12@@percent=0.86@@pos=0.5@@format_length=00:58
+=> [[ PY ]] => SET@_hscale1.set_value(0.86)
+=> [[ PY ]] => SET@_label_time.set_text('00:00 / 00:58')
+=> [[ PY ]] => DEBUG=> in bash NOT GET
+_ [u'A:   0.5 V:   0.5 A-V:  0.007 ct: -0.009  16/ 16 13%  7%  0.7% 0 0 \x1b[J\rA:   0.5 V:   0.5 A-V:  0.014 ct: -0.007  17/ 17 12%  6%  0.9% 0 0 \x1b[J\rA:   0.6 V:   0.6 A-V:  0.013 ct: -0.006  18/ 18 12%  6%  0.9% 0 0 \x1b[J\rA:   0.6 V:   0.6 A-V:  0.012 ct: -0.005  19/ 19 12%  5%  0.8% 0 0 \x1b[J\rA:   0.6 V:   0.6 A-V:  0.011 ct: -0.004  20/ 20 11%  5%  0.8% 0 0 \x1b[J\rA:   0.7 V:   0.7 A-V: -0.017 ct: -0.006  21/ 21 11%  5%  0.8% 0 0 \x1b[J\rA:   0.7 V:   0.7 A-V: -0.015 ct: -0.007  22/ 22 11%  5%  0.8% 0 0 \x1b[J\rA:   0.7 V:   0.7 A-V: -0.013 ct: -0.009  23/ 23 11%  4%  0.8% 0 0 \x1b[J\rA:   0.8 V:   0.8 A-V: -0.012 ct: -0.010  24/ 24 11%  4%  0.7% 0 0 \x1b[J\rA:   0.8 V:   0.8 A-V: -0.011 ct: -0.011  25/ 25 10%  4%  0.7% 0 0 \x1b[J\rA:   0.8 V:   0.8 A-V: -0.009 ct: -0.012  26/ 26 10%  4%  0.7% 0 0 \x1b[J\rA:   0.9 V:   0.9 A-V: -0.000 ct: -0.012  27/ 27 10%  4%  0.7% 0 0 \x1b[J\rA:   0.9 V:   0.9 A-V: -0.000 ct: -0.012  28/ 28 10%  3%  0.7% 0 0 \x1b[J\rA:   0.9 V:   0.9 A-V:  0.001 ct: -0.012  29/ 29 10%  3%  0.7% 0 0 \x1b[J\rA:   1.0 V:   1.0 A-V: -0.000 ct: -0.012  30/ 30 10%  3%  0.7% 0 0 \x1b[J\rA:   1.0 V:   1.0 A-V:  0.000 ct: -0.012  31/ 31 10%  3%  0.6% 0 0 \x1b[J\rA:   1.0 V:   1.0 A-V:  0.000 ct: -0.012  32/ 32 10%  3%  0.6% 0 0 \x1b[J\rA:   1.1 V:   1.1 A-V:  0.008 ct: -0.011  33/ 33  9%  3%  0.7% 0 0 \x1b[J\rA:   1.1 V:   1.1 A-V:  0.007 ct: -0.010  34/ 34  9%  3%  0.7% 0 0 \x1b[J\rA:   1.1 V:   1.1 A-V:  0.007 ct: -0.009  35/ 35  9%  3%  0.6% 0 0 \x1b[J\rA:   1.2 V:   1.2 A-V:  0.006 ct: -0.009  36/ 36  9%  3%  0.6% 0 0 \x1b[J\rA:   1.2 V:   1.2 A-V:  0.005 ct: -0.008  37/ 37  9%  3%  0.6% 0 0 \x1b[J\rA:   1.2 V:   1.2 A-V:  0.005 ct: -0.008  38/ 38  9%  2%  0.6% 0 0 \x1b[J\rA:   1.3 V:   1.3 A-V:  0.013 ct: -0.007  39/ 39  9%  2%  0.6% 0 0 \x1b[J\rA:   1.3 V:   1.3 A-V:  0.011 ct: -0.005  40/ 40  9%  2%  0.6% 0 0 \x1b[J\rA:   1.3 V:   1.3 A-V:  0.010 ct: -0.004  41/ 41  9%  2%  0.6% 0 0 \x1b[J\rA:   1.4 V:   1.4 A-V:  0.009 ct: -0.004  42/ 42  9%  2%  0.6% 0 0 \x1b[J\rA:   1.4 V:   1.4 A-V:  0.008 ct: -0.003  43/ 43  9%  2%  0.6% 0 0 \x1b[J\rA:   1.4 V:   1.4 A-V:  0.007 ct: -0.002  44/ 44  9%  2%  0.6% 0 0 \x1b[J\rA:   1.4 V:   1.5 A-V: -0.020 ct: -0.004  45/ 45  9%  2%  0.6% 0 0 \x1b[J\rA:   1.5 V:   1.5 A-V: -0.018 ct: -0.006  46/ 46  9%  2%  0.6% 0 0 \x1b[J\rANS_TIME_POSITION=1.5']
+percent____ 2.58086717137 2.58
+=> [[ PY ]] => DEBUG=> in bash NOT GET ProgressPlayerCb position@format_pos=00:01@@length=58.12@@percent=2.58@@pos=1.5@@format_length=00:58
+=> [[ PY ]] => :: FIFO write :: ProgressPlayerCb position@format_pos=00:01@@length=58.12@@percent=2.58@@pos=1.5@@format_length=00:58
+=> [[ PY ]] => SET@_hscale1.set_value(2.58)
+=> [[ PY ]] => SET@_label_time.set_text('00:01 / 00:58')
+=> [[ PY ]] => DEBUG=> in bash NOT GET
+_ [u'A:   1.5 V:   1.5 A-V: -0.016 ct: -0.007  47/ 47  9%  2%  0.6% 0 0 \x1b[J\rA:   1.6 V:   1.6 A-V: -0.015 ct: -0.009  48/ 48  9%  2%  0.6% 0 0 \x1b[J\rA:   1.6 V:   1.6 A-V: -0.013 ct: -0.010  49/ 49  9%  2%  0.6% 0 0 \x1b[J\rA:   1.6 V:   1.6 A-V: -0.004 ct: -0.011  50/ 50  9%  2%  0.6% 0 0 \x1b[J\rA:   1.7 V:   1.7 A-V: -0.003 ct: -0.011  51/ 51  9%  2%  0.6% 0 0 \x1b[J\rA:   1.7 V:   1.7 A-V: -0.003 ct: -0.011  52/ 52  9%  2%  0.6% 0 0 \x1b[J\rA:   1.7 V:   1.7 A-V:  0.004 ct: -0.011  53/ 53  9%  2%  0.6% 0 0 \x1b[J\rA:   1.8 V:   1.8 A-V: -0.003 ct: -0.011  54/ 54  9%  2%  0.5% 0 0 \x1b[J\rA:   1.8 V:   1.8 A-V: -0.003 ct: -0.012  55/ 55  9%  2%  0.5% 0 0 \x1b[J\rA:   1.8 V:   1.8 A-V:  0.006 ct: -0.011  56/ 56  9%  2%  0.6% 0 0 \x1b[J\rA:   1.9 V:   1.9 A-V:  0.005 ct: -0.011  57/ 57  9%  2%  0.6% 0 0 \x1b[J\rA:   1.9 V:   1.9 A-V:  0.004 ct: -0.010  58/ 58  9%  2%  0.5% 0 0 \x1b[J\rA:   1.9 V:   1.9 A-V:  0.004 ct: -0.010  59/ 59  9%  2%  0.5% 0 0 \x1b[J\rA:   2.0 V:   2.0 A-V:  0.004 ct: -0.009  60/ 60  9%  2%  0.5% 0 0 \x1b[J\rA:   2.0 V:   2.0 A-V:  0.003 ct: -0.009  61/ 61  9%  2%  0.5% 0 0 \x1b[J\rA:   2.0 V:   2.0 A-V:  0.011 ct: -0.008  62/ 62  9%  2%  0.6% 0 0 \x1b[J\rA:   2.1 V:   2.1 A-V:  0.010 ct: -0.007  63/ 63  9%  2%  0.5% 0 0 \x1b[J\rA:   2.1 V:   2.1 A-V:  0.009 ct: -0.006  64/ 64  9%  2%  0.5% 0 0 \x1b[J\rA:   2.1 V:   2.1 A-V:  0.008 ct: -0.005  65/ 65  9%  2%  0.5% 0 0 \x1b[J\rA:   2.2 V:   2.2 A-V:  0.007 ct: -0.005  66/ 66  9%  2%  0.5% 0 0 \x1b[J\rA:   2.2 V:   2.2 A-V: -0.019 ct: -0.006  67/ 67  9%  2%  0.5% 0 0 \x1b[J\rA:   2.2 V:   2.2 A-V: -0.017 ct: -0.008  68/ 68  9%  2%  0.5% 0 0 \x1b[J\rA:   2.3 V:   2.3 A-V: -0.015 ct: -0.010  69/ 69  9%  1%  0.5% 0 0 \x1b[J\rA:   2.3 V:   2.3 A-V: -0.014 ct: -0.011  70/ 70  9%  1%  0.5% 0 0 \x1b[J\rA:   2.3 V:   2.3 A-V: -0.012 ct: -0.012  71/ 71  9%  1%  0.5% 0 0 \x1b[J\rA:   2.4 V:   2.4 A-V: -0.011 ct: -0.013  72/ 72  9%  1%  0.5% 0 0 \x1b[J\rA:   2.4 V:   2.4 A-V: -0.002 ct: -0.014  73/ 73  9%  1%  0.5% 0 0 \x1b[J\rA:   2.4 V:   2.4 A-V: -0.002 ct: -0.014  74/ 74  9%  1%  0.5% 0 0 \x1b[J\rA:   2.5 V:   2.5 A-V: -0.001 ct: -0.014  75/ 75  8%  1%  0.5% 0 0 \x1b[J\rA:   2.5 V:   2.5 A-V: -0.001 ct: -0.014  76/ 76  8%  1%  0.5% 0 0 \x1b[J\rANS_TIME_POSITION=2.5']
+percent____ 4.30144528562 4.3
+=> [[ PY ]] => :: FIFO write :: ProgressPlayerCb position@format_pos=00:02@@length=58.12@@percent=4.3@@pos=2.5@@format_length=00:58
+=> [[ PY ]] => DEBUG=> in bash NOT GET ProgressPlayerCb position@format_pos=00:02@@length=58.12@@percent=4.3@@pos=2.5@@format_length=00:58
+=> [[ PY ]] => SET@_hscale1.set_value(4.3)
+=> [[ PY ]] => SET@_label_time.set_text('00:02 / 00:58')
+=> [[ PY ]] => :: FIFO write :: window1 clicked
+=> [[ PY ]] => DEBUG=> in bash NOT GET window1 clicked
+=> [[ PY ]] => PLUGIN@@CMD@@MyPlayer@@cmd.quit(0)
+_ [u'A:   2.5 V:   2.5 A-V: -0.001 ct: -0.014  77/ 77  8%  1%  0.5% 0 0 \x1b[J\rA:   2.6 V:   2.6 A-V: -0.001 ct: -0.014  78/ 78  9%  1%  0.5% 0 0 \x1b[J\rA:   2.6 V:   2.6 A-V:  0.008 ct: -0.013  79/ 79  8%  1%  0.5% 0 0 \x1b[J\rA:   2.6 V:   2.6 A-V:  0.007 ct: -0.013  80/ 80  8%  1%  0.5% 0 0 \x1b[J\rA:   2.7 V:   2.7 A-V:  0.006 ct: -0.012  81/ 81  8%  1%  0.5% 0 0 \x1b[J\rA:   2.7 V:   2.7 A-V:  0.005 ct: -0.012  82/ 82  8%  1%  0.5% 0 0 \x1b[J\rA:   2.7 V:   2.7 A-V:  0.005 ct: -0.011  83/ 83  8%  1%  0.5% 0 0 \x1b[J\rA:   2.8 V:   2.8 A-V:  0.013 ct: -0.010  84/ 84  8%  1%  0.5% 0 0 \x1b[J\rA:   2.8 V:   2.8 A-V:  0.012 ct: -0.009  85/ 85  8%  1%  0.5% 0 0 \x1b[J\rA:   2.8 V:   2.8 A-V:  0.010 ct: -0.008  86/ 86  8%  1%  0.5% 0 0 \x1b[J\rA:   2.9 V:   2.9 A-V:  0.011 ct: -0.007  87/ 87  8%  1%  0.5% 0 0 \x1b[J\rA:   2.9 V:   2.9 A-V:  0.008 ct: -0.006  88/ 88  8%  1%  0.5% 0 0 \x1b[J\rA:   2.9 V:   2.9 A-V:  0.008 ct: -0.005  89/ 89  8%  1%  0.5% 0 0 \x1b[J\rA:   3.0 V:   3.0 A-V: -0.018 ct: -0.007  90/ 90  8%  1%  0.5% 0 0 \x1b[J']
+percent____ 4.98967653131 _ [u'']
+_ [u'']
+_ [u'']
+_ [u'']
+_ [u'']
+_ [u'']
+_ [u'']
+_ [u'']
+_ [u'']
+_ [u'']
+4.99
+=> [[ PY ]] => :: FIFO write :: ProgressPlayerCb position@format_pos=00:02@@length=58.12@@percent=4.99@@pos=2.9@@format_length=00:58
+=> [[ PY ]] => EXIT@@
+=> [[ PY ]] => :: FIFO write :: QuitNow
+EXIT="no"
+self.player.cmd.quit(0) None

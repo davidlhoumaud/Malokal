@@ -1,0 +1,511 @@
+<?xml version="1.0"?>
+<interface>
+  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkWindow" id="window1">
+    <property name="visible">True</property>
+    <signal name="destroy" handler="gtk_widget_destroy"/>
+    <child>
+      <object class="GtkVBox" id="vbox1">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkHBox" id="hbox1">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkVBox" id="vbox2">
+                <property name="visible">True</property>
+                <child>
+                  <object class="GtkEntry" id="_entry1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </object>
+                  <packing>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="_entry2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button_ouvrir">
+                <property name="label">gtk-open</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_show" object="_filechooserdialog1"/>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox3">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkEntry" id="_entry_color">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+              </object>
+              <packing>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="_colorbutton1">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="color">#000000000000</property>
+                <signal name="color_set" handler="on_colorbutton"/>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button1">
+                <property name="label">gtk-select-color</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_show" object="_colorselectiondialog1"/>
+              </object>
+              <packing>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox4">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkEntry" id="_entry_recent">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+              </object>
+              <packing>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button5">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_show" object="_recentchooserdialog1"/>
+                <child>
+                  <object class="GtkHBox" id="hbox5">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkLabel" id="label2">
+                        <property name="visible">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="image1">
+                        <property name="visible">True</property>
+                        <property name="stock">gtk-file</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label1">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Fichiers r&#xE9;cents</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label3">
+                        <property name="visible">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox6">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkLabel" id="_label_font">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Police</property>
+              </object>
+              <packing>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button6">
+                <property name="label">gtk-select-font</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_show" object="_fontselectiondialog1"/>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox2">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkButton" id="button3">
+                <property name="label" translatable="yes">Modif version</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_clicked"/>
+              </object>
+              <packing>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button2">
+                <property name="label">gtk-about</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_show" object="Glade2script"/>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">4</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAboutDialog" id="Glade2script">
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">&#xC0; propos de glade2script</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <property name="has_separator">False</property>
+    <property name="program_name">Glade2script</property>
+    <property name="version">0.1g</property>
+    <signal name="response" handler="on_hide"/>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox1">
+        <property name="visible">True</property>
+        <property name="spacing">2</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area1">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkFileChooserDialog" id="_filechooserdialog1">
+    <property name="border_width">5</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <property name="has_separator">False</property>
+    <property name="action">save</property>
+    <signal name="file_activated" handler="my_callback" object="_filechooserdialog1"/>
+    <signal name="file_activated" handler="on_hide" object="_filechooserdialog1"/>
+    <signal name="selection_changed" handler="on_filechoose"/>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox3">
+        <property name="visible">True</property>
+        <property name="spacing">2</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area3">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="button7">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_hide" object="_filechooserdialog1"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button_ok_filechoose">
+                <property name="label">gtk-ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_clicked" object="_filechooserdialog1"/>
+                <signal name="clicked" handler="on_hide" object="_filechooserdialog1"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">button7</action-widget>
+      <action-widget response="0">button_ok_filechoose</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkRecentChooserDialog" id="_recentchooserdialog1">
+    <property name="border_width">5</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <property name="has_separator">False</property>
+    <property name="limit">50</property>
+    <signal name="item_activated" handler="my_callback"/>
+    <signal name="item_activated" handler="on_hide"/>
+    <signal name="selection_changed" handler="on_clicked"/>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox4">
+        <property name="visible">True</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area4">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkColorSelectionDialog" id="_colorselectiondialog1">
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">S&#xE9;lecteur de couleurs</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <child internal-child="color_selection">
+      <object class="GtkColorSelection" id="_colorsel_color_selection1">
+        <property name="visible">True</property>
+        <property name="border_width">5</property>
+        <property name="current_color">#ffffffffffff</property>
+        <signal name="color_changed" handler="on_colorsel"/>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">colorsel-help_button1</action-widget>
+      <action-widget response="0">_colorsel-ok_button1</action-widget>
+      <action-widget response="0">colorsel-cancel_button1</action-widget>
+    </action-widgets>
+    <child internal-child="help_button">
+      <object class="GtkButton" id="colorsel-help_button1">
+        <property name="label">gtk-help</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="can_default">True</property>
+        <property name="receives_default">True</property>
+        <property name="use_stock">True</property>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">colorsel-help_button1</action-widget>
+      <action-widget response="0">_colorsel-ok_button1</action-widget>
+      <action-widget response="0">colorsel-cancel_button1</action-widget>
+    </action-widgets>
+    <child internal-child="cancel_button">
+      <object class="GtkButton" id="colorsel-cancel_button1">
+        <property name="label">gtk-cancel</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="can_default">True</property>
+        <property name="receives_default">True</property>
+        <property name="use_stock">True</property>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">colorsel-help_button1</action-widget>
+      <action-widget response="0">_colorsel-ok_button1</action-widget>
+      <action-widget response="0">colorsel-cancel_button1</action-widget>
+    </action-widgets>
+    <child internal-child="ok_button">
+      <object class="GtkButton" id="_colorsel-ok_button1">
+        <property name="label">gtk-ok</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="can_default">True</property>
+        <property name="has_default">True</property>
+        <property name="receives_default">True</property>
+        <property name="use_stock">True</property>
+        <signal name="clicked" handler="on_clicked" object="_colorsel_color_selection1"/>
+        <signal name="clicked" handler="on_hide" object="_colorselectiondialog1"/>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">colorsel-help_button1</action-widget>
+      <action-widget response="0">_colorsel-ok_button1</action-widget>
+      <action-widget response="0">colorsel-cancel_button1</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkFontSelectionDialog" id="_fontselectiondialog1">
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">S&#xE9;lecteur de polices</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <child internal-child="font_selection">
+      <object class="GtkFontSelection" id="_fontsel_font_selection1">
+        <property name="visible">True</property>
+        <property name="border_width">5</property>
+        <property name="spacing">12</property>
+        <property name="font_name">Sans 12</property>
+        <signal name="button_release_event" handler="on_font" object="_fontselectiondialog1"/>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">_fontsel_ok_button1</action-widget>
+      <action-widget response="0">fontsel-apply_button1</action-widget>
+      <action-widget response="0">fontsel-cancel_button1</action-widget>
+    </action-widgets>
+    <child internal-child="cancel_button">
+      <object class="GtkButton" id="fontsel-cancel_button1">
+        <property name="label">gtk-cancel</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="can_default">True</property>
+        <property name="receives_default">True</property>
+        <property name="use_stock">True</property>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">_fontsel_ok_button1</action-widget>
+      <action-widget response="0">fontsel-apply_button1</action-widget>
+      <action-widget response="0">fontsel-cancel_button1</action-widget>
+    </action-widgets>
+    <child internal-child="apply_button">
+      <object class="GtkButton" id="fontsel-apply_button1">
+        <property name="label">gtk-apply</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="can_default">True</property>
+        <property name="receives_default">True</property>
+        <property name="use_stock">True</property>
+        <signal name="clicked" handler="on_font" object="_fontselectiondialog1"/>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">_fontsel_ok_button1</action-widget>
+      <action-widget response="0">fontsel-apply_button1</action-widget>
+      <action-widget response="0">fontsel-cancel_button1</action-widget>
+    </action-widgets>
+    <child internal-child="ok_button">
+      <object class="GtkButton" id="_fontsel_ok_button1">
+        <property name="label">gtk-ok</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="can_default">True</property>
+        <property name="has_default">True</property>
+        <property name="receives_default">True</property>
+        <property name="use_stock">True</property>
+        <signal name="clicked" handler="on_clicked" object="_fontselectiondialog1"/>
+        <signal name="clicked" handler="on_hide" object="_fontselectiondialog1"/>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">_fontsel_ok_button1</action-widget>
+      <action-widget response="0">fontsel-apply_button1</action-widget>
+      <action-widget response="0">fontsel-cancel_button1</action-widget>
+    </action-widgets>
+  </object>
+</interface>

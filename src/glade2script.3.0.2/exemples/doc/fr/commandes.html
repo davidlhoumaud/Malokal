@@ -1,0 +1,1710 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+  <title>Glade2script commands</title>
+</head>
+<body>
+<!-- HEADER -->
+<table style="width:100%;">
+<tbody>
+<tr>
+<td></td>
+<th class="align_center">Glade2script commands</th>
+<td></td>
+</tr>
+<tr>
+<td class="align_left"><a href="callbacks.html">Prev</a></td>
+<td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+<td class="align_right"><a href="pygtk.html">Next</a></td>
+</tr>
+</tbody>
+</table>
+
+<hr><br>
+<h2>Glade2script commands</h2>
+
+These commands perform actions on a widget, modify its value, size, colour, ... from the associate script
+
+<br>
+<br>
+
+<div id="top">
+<b><a href="#APPINDICATOR">APPINDICATOR@@</a><i>name@@icon@@menu@@icon-path</i></b><br/>
+<b><a href="#CLIPGET">CLIP@@GET</a><i></i></b><br/>
+<b><a href="#CLIPSET">CLIP@@SET</a><i>@@My text</i></b><br/>
+<b><a href="#COLOR">COLOR@@</a><i>widget,widget@@modify@@gtk_state@@color</i></b><br/>
+<b><a href="#COMBOCLEAR">COMBO@@CLEAR</a><i>@@combobox[,combobo,...]</i></b><br/>
+<b><a href="#COMBODELEND">COMBO@@DELEND</a><i>@@combobox</i></b><br/>
+<b><a href="#COMBOEND">COMBO@@END</a><i>@@combobox@@item[|icon]</i></b><br/>
+<b><a href="#COMBOFINDDEL">COMBO@@FINDDEL</a><i>@@combobox@@item</i></b><br/>
+<b><a href="#COMBOFINDSELECT">COMBO@@FINDSELECT</a><i>@@combobox@@item</i></b><br/>
+<b><a href="#COMBOIMG">COMBO@@IMG</a><i>@@combobox@@item|filename[|size]</i></b><br/>
+<b><a href="#EXIT">EXIT@@</a><i></i></b><br/>
+<b><a href="#EXITSAVE">EXIT@@SAVE</a><i></i></b><br/>
+<b><a href="#FILESETFILTER">FILE@@FILTER</a><i>@@filechooser@@add_mime_type@@text/plain,text/html</i></b><br/>
+<b><a href="#GEOGET">GEO@@GET</a><i>@@window</i></b><br/>
+<b><a href="#GEOSET">GEO@@SET</a><i>@@window@@width height X Y </i></b><br/>
+<b><a href="#GET">GET@</a><i>widget.cmd()</i></b><br/>
+<b><a href="#GTKRC">GTKRC@@</a><i>stylefile</i></b><br/>
+<b><a href="#IMG">IMG@@</a><i>img@@filename@@width@@height</i></b><br/>
+<b><a href="#ISACTIVE">ISACTIVE@@</a><i>widget</i></b><br/>
+<b><a href="#ITER">ITER@@</a><i>MyFunction</i></b><br/>
+<b><a href="#MAKEMENU">MAKEMENU@@</a><i>widget@@menu_name@@item::fonction::arg@@...</i></b><br/>
+<b><a href="#MULTIGET">MULTI@@GET</a><i>@@cmd()@@widget,widget</i></b><br/>
+<b><a href="#MULTISET">MULTI@@SET</a><i>@@cmd()@@widget,widget</i></b><br/>
+<b><a href="#NOTIFY">NOTIFY@@</a><i>timer@@titre@@texte@@icon</i></b><br/>
+<b><a href="#PLUGINCMD">PLUGIN@@CMD</a><i>@@name@@cmd</i></b><br/>
+<b><a href="#PLUGININIT">PLUGIN@@INIT</a><i>@@plugin@@name@@arg@@arg@@...</i></b><br/>
+<b><a href="#POINTERSTART">POINTER@@START</a><i>@@delay@@widget</i></b><br/>
+<b><a href="#POINTERSTOP">POINTER@@STOP</a><i>@@widget</i></b><br/>
+<b><a href="#SCREEN">SCREEN@@</a><i></i></b><br/>
+<b><a href="#SET">SET@</a><i>widget.cmd()</i></b><br/>
+<b><a href="#STATUS">STATUS@@</a><i>statusbar@@My Text</i></b><br/>
+<b><a href="#SUBMENU">SUBMENU@@</a><i>menu_name@@label_menuitem@@item::fonction::arg@@...</i></b><br/>
+<b><a href="#SYSTRAY">SYSTRAY@@</a><i>name@@menu@@icon@@infobulle</i></b><br/>
+<b><a href="#TERMFONT">TERM@@FONT</a><i>@@font</i></b><br/>
+<b><a href="#TERMKILL">TERM@@KILL</a><i>[@@sig]</i></b><br/>
+<b><a href="#TERMSEND">TERM@@SEND</a><i>@@commande</i></b><br/>
+<b><a href="#TERMWRITE">TERM@@WRITE</a><i>@@text</i></b><br/>
+<b><a href="#TEXTAG">TEXT@@TAG</a><i>@@textview@@tag,tag</i></b><br/>
+<b><a href="#TEXTAUTOUR">TEXT@@AUTOUR</a><i>@@textview@@texteAvant@@texteAprès</i></b><br/>
+<b><a href="#TEXTAUTOURTAG">TEXT@@AUTOURTAG</a><i>@@textview@@tag@@texteAvant@@texteAprès</i></b><br/>
+<b><a href="#TEXTCLEAR">TEXT@@CLEAR</a><i>@@textview</i></b><br/>
+<b><a href="#TEXTCREATETAG">TEXT@@CREATETAG</a><i>@@textview@@tagname@@args</i></b><br/>
+<b><a href="#TEXTCURSOR">TEXT@@CURSOR</a><i>@@textview@@text</i></b><br/>
+<b><a href="#TEXTCURSORTAG">TEXT@@CURSORTAG</a><i>@@textview@@tag@@text</i></b><br/>
+<b><a href="#TEXTDELEND">TEXT@@DELEND</a><i>@@textview</i></b><br/>
+<b><a href="#TEXTDELTAG">TEXT@@DELTAG</a><i>@@textview@@tag,tag</i></b><br/>
+<b><a href="#TEXTEND">TEXT@@END</a><i>@@textview@@text</i></b><br/>
+<b><a href="#TEXTENDTAG">TEXT@@ENDTAG</a><i>@@textview@@text</i></b><br/>
+<b><a href="#TEXTFIND">TEXT@@FIND</a><i>@@textview@@text@@action</i></b><br/>
+<b><a href="#TEXTHIZO">TEXT@@HIZO</a><i>@@treeview</i></b><br/>
+<b><a href="#TEXTHIZOTAG">TEXT@@HIZOTAG</a><i>@@textview</i></b><br/>
+<b><a href="#TEXTLOAD">TEXT@@LOAD</a><i>@@textview@@fichier</i></b><br/>
+<b><a href="#TEXTRSELECT">TEXT@@RSELECT</a><i>@@textview@@newText</i></b><br/>
+<b><a href="#TEXTRSELECTTAG">TEXT@@RSELECTTAG</a><i>@@textview@@tag@@newText</i></b><br/>
+<b><a href="#TEXTSAVE">TEXT@@SAVE</a><i>@@textview@@fichier</i></b><br/>
+<b><a href="#TEXTSELECTTAG">TEXT@@SELECTTAG</a><i>@@textview@@tag</i></b><br/>
+<b><a href="#TEXTSOURCELANG">TEXT@@SOURCE@@LANG</a><i>@@textview@@lang</i></b><br/>
+<b><a href="#TEXTSOURCESTYLE">TEXT@@SOURCE@@STYLE</a><i>@@textview@@style</i></b><br/>
+<b><a href="#TIMERSTART">TIMER@@START</a><i>@@delay@@function</i></b><br/>
+<b><a href="#TIMERSTOP">TIMER@@STOP</a><i>@@function</i></b><br/>
+<b><a href="#TOGGLEACTIVE">TOGGLE@@ACTIVE</a><i>@@widget,widget</i></b><br/>
+<b><a href="#TOGGLEEXPANDER">TOGGLE@@EXPANDER</a><i>@@widget,widget</i></b><br/>
+<b><a href="#TOGGLESENSITIVE">TOGGLE@@SENSITIVE</a><i>@@widget,widget</i></b><br/>
+<b><a href="#TOGGLEVISIBLE">TOGGLE@@VISIBLE</a><i>@@widget,widget</i></b><br/>
+<b><a href="#TREEBOTTOM">TREE@@BOTTOM</a><i>@@treeview[@@line]</i></b><br/>
+<b><a href="#TREECELL">TREE@@CELL</a><i>@@treeview@@[line[,col]]@@[data]</i></b><br/>
+<b><a href="#TREECLEAR">TREE@@CLEAR</a><i>@@treeview</i></b><br/>
+<b><a href="#TREEDOWN">TREE@@DOWN</a><i>@@treeview[@@line]</i></b><br/>
+<b><a href="#TREEEND">TREE@@END</a><i>@@treeview@@data</i></b><br/>
+<b><a href="#TREEFIND">TREE@@FIND</a><i>@@treeview@@col/None@@motif</i></b><br/>
+<b><a href="#TREEFINDDEL">TREE@@FINDDEL</a><i>@@treeview@@col/None@@motif</i></b><br/>
+<b><a href="#TREEFINDSELECT">TREE@@FINDSELECT</a><i>@@treeview@@col/None@@motif</i></b><br/>
+<b><a href="#TREEFORCE_SELECT">TREE@@FORCE_SELECT</a><i>@@treeview</i></b><br/>
+<b><a href="#TREEGET">TREE@@GET</a><i>@@treeview</i></b><br/>
+<b><a href="#TREEHIZO">TREE@@HIZO</a><i>@@treeview</i></b><br/>
+<b><a href="#TREEIMG">TREE@@IMG</a><i>@@treeview@@data|data@@colonne@@size</i></b><br/>
+<b><a href="#TREEINSERT">TREE@@INSERT</a><i>@@treeview@@line@@data</i></b><br/>
+<b><a href="#TREELOAD">TREE@@LOAD</a><i>@@treeview@@fichier</i></b><br/>
+<b><a href="#TREEPROG">TREE@@PROG</a><i>@@treeview@@line,col@@value</i></b><br/>
+<b><a href="#TREESAVE">TREE@@SAVE</a><i>@@treeview@@fichier</i></b><br/>
+<b><a href="#TREESELECT">TREE@@SELECT</a><i>@@treeview@@row</i></b><br/>
+<b><a href="#TREETOP">TREE@@TOP</a><i>@@treeview[@@line]</i></b><br/>
+<b><a href="#TREEUP">TREE@@UP</a><i>@@treeview[@@line]</i></b><br/>
+<b><a href="#WEBKITCACHE">WEBKIT@@CACHE</a><i>@@webview@@folder@@pattern@@dialog</i></b><br/>
+<b><a href="#WEBKITDISCONNECT">WEBKIT@@DISCONNECT</a><i>@@webview@@webcache,webrequest,webmenu,...</i></b><br/>
+<b><a href="#WEBKITDOWNLOAD">WEBKIT@@DOWNLOAD</a><i>@@webview@@choice</i></b><br/>
+<b><a href="#WEBKITJSFILE">WEBKIT@@JSFILE</a><i>@@webview@@file</i></b><br/>
+<b><a href="#WEBKITLINKFILTER">WEBKIT@@LINKFILTER</a><i>@@webview@@pattern</i></b><br/>
+<b><a href="#WEBKITLOAD">WEBKIT@@LOAD</a><i>@@name@@uri/html</i></b><br/>
+<b><a href="#WEBKITLOADED">WEBKIT@@LOADED</a><i>@@webview,webview</i></b><br/>
+<b><a href="#WEBKITMENU">WEBKIT@@MENU</a><i>@@webview@@item::function::value/html@@...</i></b><br/>
+<b><a href="#WEBKITOVERLINK">WEBKIT@@OVERLINK</a><i>@@webview,webview</i></b><br/>
+<b><a href="#WEBKITREQUEST">WEBKIT@@REQUEST</a><i>@@webview@@pattern</i></b><br/>
+<b><a href="#WEBKITSAVE">WEBKIT@@SAVE</a><i>@@webview</i></b><br/>
+<b><a href="#WEBKITSUBMENU">WEBKIT@@SUBMENU</a><i>@@menuitem@@item::function::value/html@@...</i></b><br/>
+<b><a href="#WINDOWBACKGROUND">WINDOW@@BACKGROUND</a><i>@@name@@image</i></b><br/>
+<b><a href="#WINDOWTRANS">WINDOW@@TRANS</a><i>@@name@@trans@@color</i></b>
+</div>
+<br>
+<br>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="APPINDICATOR"></a><b>APPINDICATOR@@</b><i>name@@icon@@menu@@icon-path</i>
+    <div class="text">Init new app indicator (not avalaible with GTK3)
+    </div>
+    <div class="info">name: acces name<br/>
+icon: the icon name<br/>
+menu: the context menu<br/>
+path: additional icon theme path or None<br/>
+see exemple for usage
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="CLIPGET"></a><b>CLIP@@GET</b><i></i>
+    <div class="text">Get the clipboard content. Indicate the --clipboard option
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: 'clipboard' function will be called with the clipboard content as argument.<br/>
+py: clipboard content
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="CLIPSET"></a><b>CLIP@@SET</b><i>@@My text</i>
+    <div class="text">Loads 'My text' in the clipboard. Indicate the --clipboard option
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="COLOR"></a><b>COLOR@@</b><i>widget,widget@@modify@@gtk_state@@color</i>
+    <div class="text">Changes the color of a widget
+    </div>
+    <div class="info">#FFFFFF or name color<br/>
+modify gtk2: modify_fg, modify_text, modify_bg, modify_base<br/>
+modify gtk3: background_color, color<br/>
+gtk_state: NORMAL, SELECTED, ACTIVE, PRELIGHT
+    </div>
+  </div>
+  <div class="exemple">echo 'COLOR@@_textview1@@color@@NORMAL@@black'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="COMBOCLEAR"></a><b>COMBO@@CLEAR</b><i>@@combobox[,combobo,...]</i>
+    <div class="text">Deletes all the elements of the combobox
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="COMBODELEND"></a><b>COMBO@@DELEND</b><i>@@combobox</i>
+    <div class="text">Deletes the last element of the combobox.
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="COMBOEND"></a><b>COMBO@@END</b><i>@@combobox@@item[|icon]</i>
+    <div class="text">Adds a line to the combo.
+    </div>
+    <div class="info">icon: name of the image (gtk theme), optional
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="COMBOFINDDEL"></a><b>COMBO@@FINDDEL</b><i>@@combobox@@item</i>
+    <div class="text">Deletes one combobox element by its item.
+    </div>
+    <div class="info">item: Regular expression
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="COMBOFINDSELECT"></a><b>COMBO@@FINDSELECT</b><i>@@combobox@@item</i>
+    <div class="text">Selects a combobox element by its item.
+    </div>
+    <div class="info">item: Regular expression
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="COMBOIMG"></a><b>COMBO@@IMG</b><i>@@combobox@@item|filename[|size]</i>
+    <div class="text">Adds a line with image to the combo.
+    </div>
+    <div class="info">size: in pixel, optional<br/>
+filename: relative or absolute path of the picture
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="EXIT"></a><b>EXIT@@</b><i></i>
+    <div class="text">Exits without keeping variables
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">EXIT='no' or exit code 1
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="EXITSAVE"></a><b>EXIT@@SAVE</b><i></i>
+    <div class="text">Exits with the variables
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">EXIT='yes' or exit code 0
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="FILESETFILTER"></a><b>FILE@@FILTER</b><i>@@filechooser@@add_mime_type@@text/plain,text/html</i>
+    <div class="text">Adds a filter to fileselection
+    </div>
+    <div class="info">add_mime_type => text/plain,text/html,...<br/>
+add_pattern   => *view*,*tray*,... (see pygtk doc for pattern syntax)
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="GEOGET"></a><b>GEO@@GET</b><i>@@window</i>
+    <div class="text">Dimensions and location of the window
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: geo@width height X Y<br/>
+py: ('geo', (width, height, X, Y))<br/>
+window_geo variable loaded too
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="GEOSET"></a><b>GEO@@SET</b><i>@@window@@width height X Y </i>
+    <div class="text">Resizes and moves a window
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="GET"></a><b>GET@</b><i>widget.cmd()</i>
+    <div class="text">Gets a widget value via a pygtk command and loads a variable in the environnement
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: The widget.cmd() command will load the ${widget_cmd} variable<br/>
+py: (value)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="GTKRC"></a><b>GTKRC@@</b><i>stylefile</i>
+    <div class="text">Loads a rc-style file (or css file in gtk3)
+    </div>
+    <div class="info">stylefile: relative or absolute path of the gtk-style file
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="IMG"></a><b>IMG@@</b><i>img@@filename@@width@@height</i>
+    <div class="text">Modify an image
+    </div>
+    <div class="info">filename: relatif or absolute path of the image<br/>
+width, height: image size in pixels
+    </div>
+  </div>
+  <div class="exemple">echo 'IMG@@_img_tux@@tux.png@@150@@150'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="ISACTIVE"></a><b>ISACTIVE@@</b><i>widget</i>
+    <div class="text">Resends all the active toogles for the widget childs
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: isactive@widget widget widget<br/>
+py: (widgets_list)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="ITER"></a><b>ITER@@</b><i>MyFunction</i>
+    <div class="text">Calls a function of the associate script
+    </div>
+    <div class="info">This allows to call a function in the environnement loaded with the new variables<br/>
+<a href="infos.html#ITER"> plus ...</a>
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="MAKEMENU"></a><b>MAKEMENU@@</b><i>widget@@menu_name@@item::fonction::arg@@...</i>
+    <div class="text">Creates a context menu (is easier to use glade to create it ...)
+    </div>
+    <div class="info">widget: the widget which will receive the menu<br/>
+menu_name: menu name<br/>
+item: menu label<br/>
+function: function to be called<br/>
+arg: function argument<br/>
+use `separator::None::None' to add separator
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="MULTIGET"></a><b>MULTI@@GET</b><i>@@cmd()@@widget,widget</i>
+    <div class="text">Runs the pygtk command on the widgets.
+    </div>
+    <div class="info">Same principle as GET@, but simultaneously on several widgets
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">same as GET@
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="MULTISET"></a><b>MULTI@@SET</b><i>@@cmd()@@widget,widget</i>
+    <div class="text">Runs the pygtk command on the widgets.
+    </div>
+    <div class="info">Same principle as SET@, but simultaneously on several widgets
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="NOTIFY"></a><b>NOTIFY@@</b><i>timer@@titre@@texte@@icon</i>
+    <div class="text">Displays a notify message
+    </div>
+    <div class="info">timer: display delay in millisecondes<br/>
+titre: message title<br/>
+texte: text to display<br/>
+icon: image path or icon name<br/>
+dependancies: pynotify and libnotify
+    </div>
+  </div>
+  <div class="exemple">echo 'NOTIFY@@2@@Titre@@Ligne1\nLigne2\n<i>Ligne3</i>@@dialog-yes'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="PLUGINCMD"></a><b>PLUGIN@@CMD</b><i>@@name@@cmd</i>
+    <div class="text">Execute a plugin command
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="PLUGININIT"></a><b>PLUGIN@@INIT</b><i>@@plugin@@name@@arg@@arg@@...</i>
+    <div class="text">Starts plugin
+    </div>
+    <div class="info">plugin the plugin name<br/>
+name the name used for the plugin instance
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="POINTERSTART"></a><b>POINTER@@START</b><i>@@delay@@widget</i>
+    <div class="text">Starts the cursor monitoring on a widget
+    </div>
+    <div class="info">delay: milliseconds
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: move@x y<br/>
+py-cb: ('move', x, y)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="POINTERSTOP"></a><b>POINTER@@STOP</b><i>@@widget</i>
+    <div class="text">STops the cursor monitoring for the widget
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="SCREEN"></a><b>SCREEN@@</b><i></i>
+    <div class="text">Loads the screen dimensions in the environment
+    </div>
+    <div class="info">keep for retro-compatibility since < 2.3.0<br/>
+otherwise G2S_SCREEN_HEIGHT, G2S_SCREEN_WIDTH variables was loaded
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">screen_height="1200" screen_width="1800"<br/>
+py: (width, height)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="SET"></a><b>SET@</b><i>widget.cmd()</i>
+    <div class="text">runs a pygtk command (show(), hide(), ...)
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="STATUS"></a><b>STATUS@@</b><i>statusbar@@My Text</i>
+    <div class="text">Displays a text in a statusbar.
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="SUBMENU"></a><b>SUBMENU@@</b><i>menu_name@@label_menuitem@@item::fonction::arg@@...</i>
+    <div class="text">Creates a sub-menu
+    </div>
+    <div class="info">menu_name: menu name<br/>
+label_menuitem: the menu label where the sub-menu will appear from
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="SYSTRAY"></a><b>SYSTRAY@@</b><i>name@@menu@@icon@@infobulle</i>
+    <div class="text">Displays a systray icon.
+    </div>
+    <div class="info">name: acces name<br/>
+icon: the icon name<br/>
+menu: associated contextmenu or None<br/>
+infobulle: tootltip text<br/>
+Default hide, use pygtk command to show it and more (see exemple)
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TERMFONT"></a><b>TERM@@FONT</b><i>@@font</i>
+    <div class="text">Modify the terminal font
+    </div>
+    <div class="info">Indicate the --terminal option<br/>
+font: pangoFontDescription ex: serif,monospace bold italic condensed 10
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TERMKILL"></a><b>TERM@@KILL</b><i>[@@sig]</i>
+    <div class="text">Kills the process launched in the terminal (not avalaible with GTK3)
+    </div>
+    <div class="info">sig: numerical kill signal<br/>
+Indicate the --terminal option
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TERMSEND"></a><b>TERM@@SEND</b><i>@@commande</i>
+    <div class="text">Runs a command in the terminal
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TERMWRITE"></a><b>TERM@@WRITE</b><i>@@text</i>
+    <div class="text">Writes in the terminal
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTAG"></a><b>TEXT@@TAG</b><i>@@textview@@tag,tag</i>
+    <div class="text">Apply a tag to the entire textbuffer
+    </div>
+    <div class="info">tag: name of the tag(s) previously created
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTAUTOUR"></a><b>TEXT@@AUTOUR</b><i>@@textview@@texteAvant@@texteAprès</i>
+    <div class="text">Circles a text selection
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTAUTOURTAG"></a><b>TEXT@@AUTOURTAG</b><i>@@textview@@tag@@texteAvant@@texteAprès</i>
+    <div class="text">Circles a text selection with tag
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTCLEAR"></a><b>TEXT@@CLEAR</b><i>@@textview</i>
+    <div class="text">Deletes the textview
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTCREATETAG"></a><b>TEXT@@CREATETAG</b><i>@@textview@@tagname@@args</i>
+    <div class="text">Creates a tag that can be used for the textview
+    </div>
+    <div class="info">tagname: tag name<br/>
+args: see pygtk doc, e.g.: style=Pango.Style.ITALIC<br/>
+gtk2: pango.STYLE_ITALIC<br/>
+gtk3: Pango.Style.ITALIC
+    </div>
+  </div>
+  <div class="exemple">echo 'TEXT@@CREATETAG@@textview[,textview,...]@@redItalic@@style=Pango.Style.ITALIC,foreground=red'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTCURSOR"></a><b>TEXT@@CURSOR</b><i>@@textview@@text</i>
+    <div class="text">Adds some text at the cursor location
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTCURSORTAG"></a><b>TEXT@@CURSORTAG</b><i>@@textview@@tag@@text</i>
+    <div class="text">Adds some text with tag at the cursor location
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTDELEND"></a><b>TEXT@@DELEND</b><i>@@textview</i>
+    <div class="text">Deletes the last line of the textview
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTDELTAG"></a><b>TEXT@@DELTAG</b><i>@@textview@@tag,tag</i>
+    <div class="text">Deletes tag(s) of the textview
+    </div>
+    <div class="info">Use ALL to delete all tags
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTEND"></a><b>TEXT@@END</b><i>@@textview@@text</i>
+    <div class="text">Adds at the end of the textview
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTENDTAG"></a><b>TEXT@@ENDTAG</b><i>@@textview@@text</i>
+    <div class="text">Adds at the end of the textview with a tag
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">echo 'TEXT@@ENDTAG@@_textview1@@un text with &lt;redItalic&gt;tag&lt;/redItalic&gt;'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTFIND"></a><b>TEXT@@FIND</b><i>@@textview@@text@@action</i>
+    <div class="text">Search text
+    </div>
+    <div class="info">text: text to find, use ^ or $ for starts or ends line search<br/>
+action: scroll, select, or tag name
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTHIZO"></a><b>TEXT@@HIZO</b><i>@@treeview</i>
+    <div class="text">Calls the textview function with its content as argument
+    </div>
+    <div class="info">The end-of-line will be replaced by some @@
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: hizo@texte@@texte@@texte...<br/>
+py: ('hizo', texte)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTHIZOTAG"></a><b>TEXT@@HIZOTAG</b><i>@@textview</i>
+    <div class="text">Calls the textview function with its content as argument
+    </div>
+    <div class="info">The end-of-line will be replaced by some @@
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: hizotag@texte@@texte@@texte...<br/>
+py: ('hizotag', texte)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTLOAD"></a><b>TEXT@@LOAD</b><i>@@textview@@fichier</i>
+    <div class="text">Loads the textview from a file
+    </div>
+    <div class="info">fichier: absolute or relative file path
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTRSELECT"></a><b>TEXT@@RSELECT</b><i>@@textview@@newText</i>
+    <div class="text">Replace the selected text
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTRSELECTTAG"></a><b>TEXT@@RSELECTTAG</b><i>@@textview@@tag@@newText</i>
+    <div class="text">Replace the selected text with a tag
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTSAVE"></a><b>TEXT@@SAVE</b><i>@@textview@@fichier</i>
+    <div class="text">Saves the textview in a file
+    </div>
+    <div class="info">fichier: absolute or relative file path
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTSELECTTAG"></a><b>TEXT@@SELECTTAG</b><i>@@textview@@tag</i>
+    <div class="text">Adds/remove one or several tag(s) to the selection
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTSOURCELANG"></a><b>TEXT@@SOURCE@@LANG</b><i>@@textview@@lang</i>
+    <div class="text">Set the language code view
+    </div>
+    <div class="info">Only with --sourceview option<br/>
+Environnement variable G2S_SOURCEVIEW_LANG loaded
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TEXTSOURCESTYLE"></a><b>TEXT@@SOURCE@@STYLE</b><i>@@textview@@style</i>
+    <div class="text">Set the language code view
+    </div>
+    <div class="info">Only with --sourceview option<br/>
+Environnement variable G2S_SOURCEVIEW_STYLE loaded
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TIMERSTART"></a><b>TIMER@@START</b><i>@@delay@@function</i>
+    <div class="text">Loop call of a function
+    </div>
+    <div class="info">delay: milliseconds
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TIMERSTOP"></a><b>TIMER@@STOP</b><i>@@function</i>
+    <div class="text">Stops the loop call
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TOGGLEACTIVE"></a><b>TOGGLE@@ACTIVE</b><i>@@widget,widget</i>
+    <div class="text">Toggle the active status of one or several widget(s) (check, radio, toggle)
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TOGGLEEXPANDER"></a><b>TOGGLE@@EXPANDER</b><i>@@widget,widget</i>
+    <div class="text">Opens or closes one or several expander(s)
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TOGGLESENSITIVE"></a><b>TOGGLE@@SENSITIVE</b><i>@@widget,widget</i>
+    <div class="text">Toggles the sensitive (grey) status of one or several widget(s)
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TOGGLEVISIBLE"></a><b>TOGGLE@@VISIBLE</b><i>@@widget,widget</i>
+    <div class="text">Toggles the visibility status of one or several widget(s)
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEBOTTOM"></a><b>TREE@@BOTTOM</b><i>@@treeview[@@line]</i>
+    <div class="text">Push down in last position the selected line or the indicated line
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+line: line number (optional)
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREECELL"></a><b>TREE@@CELL</b><i>@@treeview@@[line[,col]]@@[data]</i>
+    <div class="text">Modify a cell or a line
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+line: path (1 ou 1:0)<br/>
+col: colonne (optionnel)<br/>
+data: text|text|text<br/>
+if not `data', the line will be erased<br/>
+if not `col', line will be replaced <br/>
+else the cellule will be modified
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREECLEAR"></a><b>TREE@@CLEAR</b><i>@@treeview</i>
+    <div class="text">Deletes the treeview
+    </div>
+    <div class="info">Indicate the --tree/-t option
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEDOWN"></a><b>TREE@@DOWN</b><i>@@treeview[@@line]</i>
+    <div class="text">Push down the selected line or the indicated line
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+line: line number (optional)
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEEND"></a><b>TREE@@END</b><i>@@treeview@@data</i>
+    <div class="text">Adds a line at the end of the treeview
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+data: text|text|text
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEFIND"></a><b>TREE@@FIND</b><i>@@treeview@@col/None@@motif</i>
+    <div class="text">Finds and sends the lines according to a motif and a column
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+col/None: if None, will be the entire line<br/>
+motif: Regular expression
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: find@item|path|path|path...<br/>
+py: (None, [liste_find], 'find')
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEFINDDEL"></a><b>TREE@@FINDDEL</b><i>@@treeview@@col/None@@motif</i>
+    <div class="text">Finds and deletes a line according to a motif and a column
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+col/None: if None, will be the entire line<br/>
+motif: Regular expression
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: finddel@path@linedata<br/>
+py: (path, [line], 'finddel')
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEFINDSELECT"></a><b>TREE@@FINDSELECT</b><i>@@treeview@@col/None@@motif</i>
+    <div class="text">Finds and selects a line according to a motif and a column
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+col/None: if None, will be the entire line<br/>
+motif: Regular expression
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEFORCE_SELECT"></a><b>TREE@@FORCE_SELECT</b><i>@@treeview</i>
+    <div class="text">Force the variable selection (security block)
+    </div>
+    <div class="info">Indicate the --tree/-t option
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEGET"></a><b>TREE@@GET</b><i>@@treeview</i>
+    <div class="text">Loads the selected line in a variable and calls the treeview function
+    </div>
+    <div class="info">Python direct acces: <i>self.g2s.retourne_selection(treename)</i><br/>
+Indicate the --tree/-t option
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">variable and calls function, arg: line@data|data|data
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEHIZO"></a><b>TREE@@HIZO</b><i>@@treeview</i>
+    <div class="text">Sends the treeview content to its function
+    </div>
+    <div class="info">path will send if it's a real treeview (arborescence)<br/>
+With python to get return, call directly self.g2s.TREEHIZO('TREE@@HIZO@@treeview')<br/>
+Indicate the --tree/-t option
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: hizo@[path@]data|data@@[path@]data|data => the lines are separated by @@<br/>
+py: (None, [list], 'hizo')
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEIMG"></a><b>TREE@@IMG</b><i>@@treeview@@data|data@@colonne@@size</i>
+    <div class="text">Adds a line containing an image
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+column: where the image is<br/>
+size: in pixels
+    </div>
+  </div>
+  <div class="exemple">echo 'TREE@@IMG@@treeview1@@texte col 1|texte col 2|tux.png@@2@@150'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEINSERT"></a><b>TREE@@INSERT</b><i>@@treeview@@line@@data</i>
+    <div class="text">insert a line in the treeview
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+line: path (1 or 1:0)<br/>
+data: text|text|text
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREELOAD"></a><b>TREE@@LOAD</b><i>@@treeview@@fichier</i>
+    <div class="text">Loads the treeview from a file
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+fichier: absolute or relative file path
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEPROG"></a><b>TREE@@PROG</b><i>@@treeview@@line,col@@value</i>
+    <div class="text">Modify the value of a progressbar contained in the treeview
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+value: 0 to 100
+    </div>
+  </div>
+  <div class="exemple">echo 'TREE@@PROG@@treeview1@@1,2@80'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREESAVE"></a><b>TREE@@SAVE</b><i>@@treeview@@fichier</i>
+    <div class="text">Saves the treeview in a file
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+fichier: relative or absolute file path
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREESELECT"></a><b>TREE@@SELECT</b><i>@@treeview@@row</i>
+    <div class="text">Select row in the treeview
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+row: integrer
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREETOP"></a><b>TREE@@TOP</b><i>@@treeview[@@line]</i>
+    <div class="text">Push up in first position the selected line or the indicated line
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+line: line number (optional)
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="TREEUP"></a><b>TREE@@UP</b><i>@@treeview[@@line]</i>
+    <div class="text">Push up the selected line or the indicated line
+    </div>
+    <div class="info">Indicate the --tree/-t option<br/>
+line: line number (optional)
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITCACHE"></a><b>WEBKIT@@CACHE</b><i>@@webview@@folder@@pattern@@dialog</i>
+    <div class="text">Puts in cache filtered via the pattern
+    </div>
+    <div class="info">dossier: folder path or None (/tmp/webcache)<br/>
+pattern: Regular expression<br/>
+dialog: verbose / quiet
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: cache@url<br/>
+py: (cache, url)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITDISCONNECT"></a><b>WEBKIT@@DISCONNECT</b><i>@@webview@@webcache,webrequest,webmenu,...</i>
+    <div class="text">disconnects all signals
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITDOWNLOAD"></a><b>WEBKIT@@DOWNLOAD</b><i>@@webview@@choice</i>
+    <div class="text">Action to perform during a download request
+    </div>
+    <div class="info">choice: UserChoose/UserSave/GetLink<br/>
+UserChoose calls the function with the save destination user choice<br/>
+UserSave: saves a file directly from the user choice, also calls the function<br/>
+GetLink: simple function call
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: UserChoose@destination, UserSave@destination, GetLink@url <br/>
+py: (arg, value)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITJSFILE"></a><b>WEBKIT@@JSFILE</b><i>@@webview@@file</i>
+    <div class="text">Loads a JS file in a html environnement
+    </div>
+    <div class="info">file: absolute and relative file path
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITLINKFILTER"></a><b>WEBKIT@@LINKFILTER</b><i>@@webview@@pattern</i>
+    <div class="text">Filters each user click on links via the pattern
+    </div>
+    <div class="info">pattern: Regular expression
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">linkfilter@url
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITLOAD"></a><b>WEBKIT@@LOAD</b><i>@@name@@uri/html</i>
+    <div class="text">Loads the webview
+    </div>
+    <div class="info">uri: http://something;com or /home/folder/file.html<br/>
+html: html raw text
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITLOADED"></a><b>WEBKIT@@LOADED</b><i>@@webview,webview</i>
+    <div class="text">Calls the function when the html is loaded
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">loaded
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITMENU"></a><b>WEBKIT@@MENU</b><i>@@webview@@item::function::value/html@@...</i>
+    <div class="text">Creates a context menu
+    </div>
+    <div class="info">item:function:value/html<br/>
+item: menu label<br/>
+function: function to call<br/>
+value: value of the element under the cursor<br/>
+html: html of the element under the cursor<br/>
+separator:None:None
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITOVERLINK"></a><b>WEBKIT@@OVERLINK</b><i>@@webview,webview</i>
+    <div class="text">Calls the function when cursor goes above the links
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: overlink@url<br/>
+py: (overlink, url)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITREQUEST"></a><b>WEBKIT@@REQUEST</b><i>@@webview@@pattern</i>
+    <div class="text">Filters the http requests
+    </div>
+    <div class="info">pattern: `ALL' / item<br/>
+All: calls the function with all the requests as argument<br/>
+item: filters via the regular expression (does not display the filtered requests in the webview)
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: request@http://...<br/>
+py: (request, http//...)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITSAVE"></a><b>WEBKIT@@SAVE</b><i>@@webview</i>
+    <div class="text">Calls the webview function with its content as argument
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">sh: save@html_quoted<br/>
+py: ('save', html)
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WEBKITSUBMENU"></a><b>WEBKIT@@SUBMENU</b><i>@@menuitem@@item::function::value/html@@...</i>
+    <div class="text">Creates a context sub-menu
+    </div>
+    <div class="info">menuitem: label of the context menu from where the sub-menu will appear<br/>
+item:function:value/html<br/>
+item: menu label<br/>
+function: function to call<br/>
+value: value of the element under the cursor<br/>
+html: html of the element under the cursor<br/>
+separator:None:None
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WINDOWBACKGROUND"></a><b>WINDOW@@BACKGROUND</b><i>@@name@@image</i>
+    <div class="text">Uses an image as window background (not available GTK3)
+    </div>
+    <div class="info">this command must be run before the window display,<br/>
+set the window on invisible then run a show().<br/>
+name: window name<br/>
+image: relative or absolute image path
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="WINDOWTRANS"></a><b>WINDOW@@TRANS</b><i>@@name@@trans@@color</i>
+    <div class="text">Ajusts the transparency and color of the window background (not available GTK3)
+    </div>
+    <div class="info">add the --transparent option<br/>
+name: window name<br/>
+trans: transparency (0 to 1)<br/>
+color: #ffffff or color name
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+<br>
+<br>
+<hr>
+<!-- FOOTER -->
+<table style="width:100%;">
+<tbody>
+<tr>
+<td class="align_left"><a accesskey="p" href="callbacks.html">Prev</a></td>
+<td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+<td class="align_right"><a href="pygtk.html">Next</a></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

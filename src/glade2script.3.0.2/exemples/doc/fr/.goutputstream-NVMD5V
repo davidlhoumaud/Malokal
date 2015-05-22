@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+  <title>Associé</title>
+</head>
+<body>
+<!-- HEADER -->
+<table style="width:100%;" summary="Navigation header">
+  <tbody>
+  <tr>
+    <td></td>
+    <th class="align_center">Principe</th>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="align_left"><a href="options.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="traduire.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+<br>
+<hr><br>
+
+<h2>Script associé</h2>
+<br>
+Le
+script associé pourra être écrit dans différents langages, il doit
+juste créer un fifo et rester à l'écoute de ce fichier (pour envoyer
+dans l'environnement des variables ou appeler des fonctions), et
+envoyer sur le stdout (echo, print selon langage) des commandes.
+<br>
+<br>
+Dans ce fichier FIFO, les données écrites seront de deux types:<br>
+
+<pre class="content_boite">
+# chargement d'une variable
+GET@WidgetName_action=&#8221;resultat&#8221;
+
+# appel d'une focntion
+WidgetName Argument
+</pre>
+
+<br>
+<br>
+
+<h3>Exemple en bash</h3>
+<pre class="content_boite">
+#! /bin/bash
+
+création du fifo
+
+fonction()
+{ # fonction du widget
+echo "SET@_label.set_text('Bonjour le monde !')"
+}
+
+boucle de réception
+
+exit 
+</pre>
+
+<br>
+<br>
+<pre class="content_boite">
+# Création du fifo
+PID=$$
+FIFO=/tmp/FIFO${PID}
+mkfifo $FIFO
+</pre>
+
+<pre class="content_boite">
+# boucle de réception
+while read ligne; do
+  if [[ "$ligne" =~ GET@ ]]; then
+    eval ${ligne#*@}
+    echo "DEBUG => in boucle bash :" ${ligne#*@}
+  else
+    echo "DEBUG=> in bash NOT GET" $ligne
+    $ligne
+  fi
+done < <(while true; do
+read entree &lt; /tmp/FIFO
+[[ "$entree" == "QuitNow" ]] && break
+echo $entree
+done)
+</pre>
+
+<pre class="content_boite">
+# boucle de réception proposée par Totor du forum ubuntu
+exec 4&lt;&gt;/tmp/FIFO
+while read -u 4 ligne
+  do
+    if [[ "$ligne" == "QuitNow" ]]; then
+      break
+    elif [[ "$ligne" =~ GET@ ]]; then
+      eval ${ligne#*@}
+      echo "DEBUG =&gt; in boucle bash :" ${ligne#*@}
+    else
+      echo "DEBUG=&gt; in bash NOT GET" $ligne
+      $ligne
+    fi
+  done
+exec 4&gt;&amp;- 4&lt;&amp;-
+</pre>
+<br>
+<br>
+<br>
+
+
+<h3>Exemple en python avec FIFO</h3>
+<pre class="content_boite">
+#! /usr/bin/env python
+# -*- coding:Utf­8 ­-*-
+import os
+import sys
+
+path_FIFO='/tmp/FIFO%s' % os.getpid()
+
+try:
+    os.unlink(path_FIFO)
+except:
+    pass       
+os.mkfifo(path_FIFO)
+
+   
+class Action(threading.Thread):
+    def __init__(self):
+        self.termine = True
+        threading.Thread.__init__(self)
+       
+    def boucle_fifo(self):
+        while self.termine:
+            li=file(path_FIFO,'r').readline()
+            if li:
+                arg=li.rstrip()
+                if arg == 'QuitNow':
+                    self.termine = False
+                    os.remove(path_FIFO)
+                    break
+                elif 'GET@' in arg:
+                    var = '@'.join( arg.split('@')[1:] )
+                    myvar= var.split('=')[0]
+                    myarg = '='.join( var.split('=')[1:] )
+                    print "in_GET",myvar, myarg
+                    sys.stdout.flush()
+                    #exec( 'self.%s="""%s"""' % (myvar, myarg) )
+                    try: myarg = eval(myarg)
+                    except: pass
+                    setattr(self, myvar, myarg)
+                else:
+                    function = arg.split(' ')[0]
+                    arg = arg.replace( '%s ' % function, '')
+                    print  "in_NOT_GET",arg
+                    sys.stdout.flush()
+                    try: arg = eval(arg)
+                    except: pass
+                    getattr(self, function)(arg)
+           
+    def fonction(self, arg=None):
+        # fonction du widget, sys.stdout.flush() obligatoire apr

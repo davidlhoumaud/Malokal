@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+<head>
+   <title>Horloge</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <style type="text/css">
+      .aig
+      {
+         position: absolute;
+         bottom: 48px;
+         -moz-transform-origin: bottom center;
+         -webkit-transform-origin: bottom center;
+         -o-transform-origin: bottom center;
+         transform-origin: bottom center;
+      }
+      #horloge
+      {
+         position: relative;
+         height: 96px;
+         width: 96px;
+         border: 1px solid black;
+         -moz-border-radius: 48px;
+         -webkit-border-radius: 48px;
+         -o-border-radius: 48px;
+         border-radius: 48px;
+      }
+   </style>
+   <script type="text/javascript">
+    window.onload = function()
+    {
+      if(document.getElementsByTagName('body')[0].style.MozTransform == ''
+         || document.getElementsByTagName('body')[0].style.WebkitTransform == ''
+         || document.getElementsByTagName('body')[0].style.OTransform == ''
+         || document.getElementsByTagName('body')[0].style.OTransform
+         || document.getElementsByTagName('body')[0].style.transform == '')
+      {
+         function aig()
+         {
+             aigS.style.MozTransform    =
+             aigS.style.WebkitTransform =
+             aigS.style.OTransform      =
+             aigS.style.transform       = 'rotate(' + (time * 6) + 'deg)';
+             aigM.style.MozTransform    =
+             aigM.style.WebkitTransform =
+             aigM.style.OTransform      =
+             aigM.style.transform       = 'rotate(' + Math.round(time / 10) + 'deg)';
+             aigH.style.MozTransform    =
+             aigH.style.WebkitTransform =
+             aigH.style.OTransform      =
+             aigH.style.transform       = 'rotate(' + Math.round(time / 120) + 'deg)';
+         }
+
+         var aigS = document.createElement('img');
+            aigS.setAttribute('src'  , 'imgs/aigS.png');
+            aigS.setAttribute('class', 'aig');
+            aigS.setAttribute('alt'  , 'aiguille des secondes');
+            aigS.setAttribute('style', 'left: 48px;');
+
+         var aigM = document.createElement('img');
+            aigM.setAttribute('src'  , 'imgs/aigM.png');
+            aigM.setAttribute('class', 'aig');
+            aigM.setAttribute('alt'  , 'aiguille des minutes');
+            aigM.setAttribute('style', 'left: 48px;');
+
+         var aigH = document.createElement('img');
+            aigH.setAttribute('src'  , 'imgs/aigH.png');
+            aigH.setAttribute('class', 'aig');
+            aigH.setAttribute('alt'  , 'aiguille des heures');
+            aigH.setAttribute('style', 'left: 48px;');
+
+         var horloge = document.getElementById('horloge');
+            horloge.appendChild(aigS);
+            horloge.appendChild(aigM);
+            horloge.appendChild(aigH);
+            horloge.setAttribute('style', 'background: url(\'imgs/cadran.png\');');
+
+
+         var d    = new Date();
+         var time = d.getSeconds() + 60 * d.getMinutes() + 3600 * d.getHours();
+         aig();
+         setInterval(function() {
+            time++;
+            aig();
+         }, 1000);
+      }
+      setInterval(function() {
+         d    = new Date();
+         time = d.getSeconds() + 60 * d.getMinutes() + 3600 * d.getHours();
+      }, 60000);
+   };
+   </script>
+</head>
+<body>
+   <div id="horloge">
+
+   </div>
+</body>
+</html>
+

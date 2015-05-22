@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+  <title>Gtk.Combo</title>
+</head>
+<body>
+<!-- HEADER -->
+<table style="width:100%;" summary="Navigation header">
+  <tbody>
+  <tr>
+    <td></td>
+    <th class="align_center">Gtk.Combo</th>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="align_left"><a href="calendar.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="color.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+<br>
+<hr>
+<br>
+
+<h2>Gtk.Combo*</h2>
+<p>Gtk.ComboBox - Gtk.ComboBoxEntry</p>
+
+<br>
+<br>
+<br>
+<br>
+
+<h3>Commandes pyGtk</h3>
+<pre class="bleu">
+Les plus utilisées: <br> <code><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkcombobox.html#method-gtkcombobox--append-text" title="gtk.ComboBox.append_text">append_text</a></code>(<span class="bold">text</span>)<br> <code><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkcombobox.html#method-gtkcombobox--insert-text" title="gtk.ComboBox.insert_text">insert_text</a>(</code><span class="bold">position, text</span>)<br> <code><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkcombobox.html#method-gtkcombobox--prepend-text" title="gtk.ComboBox.prepend_text">prepend_text</a>(</code><span class="bold">text</span>)<br> <code><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkcombobox.html#method-gtkcombobox--remove-text" title="gtk.ComboBox.remove_text">remove_text</a>(</code><span class="bold">position</span>)<br> <code><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkcombobox.html#method-gtkcombobox--get-active-text" title="gtk.ComboBox.get_active_text">get_active_text</a>()</code>
+ <code><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkcombobox.html#method-gtkcombobox--set-active" title="gtk.ComboBox.get_active_text">set_active</a>(</code><span class="bold">position</span>)<br><br>Documentation pyGtk: <a href="/usr/share/gtk-doc/html/pygtk/class-gtkcombobox.html">gtk.ComboBox</a></pre>
+
+<br>
+<br>
+<br>
+
+<h3>Commandes glade2script</h3>
+<div id="top">
+<b><a href="commandes.html#COMBOCLEAR">COMBO@@CLEAR</a><i>@@combobox[,combobo,...]</i></b><br>
+<b><a href="commandes.html#COMBODELEND">COMBO@@DELEND</a><i>@@combobox</i></b><br>
+<b><a href="commandes.html#COMBOEND">COMBO@@END</a><i>@@combobox@@item[|icon]</i></b><br>
+<b><a href="commandes.html#COMBOFINDDEL">COMBO@@FINDDEL</a><i>@@combobox@@item</i></b><br>
+<b><a href="commandes.html#COMBOFINDSELECT">COMBO@@FINDSELECT</a><i>@@combobox@@item</i></b><br>
+<b><a href="commandes.html#COMBOIMG">COMBO@@IMG</a><i>@@combobox@@item|filename[|size]</i></b><br>
+</div>
+
+<br>
+<br>
+<br>
+
+<h3>Callbacks</h3>
+<div class="orange">
+<a href="signaux.html#on_combo">on_combo</a>
+</div>
+
+
+<br>
+<br>
+<br>
+
+<h3>Signaux</h3>
+<div class="orange">
+"<a href="/usr/share/gtk-doc/html/pygtk/class-gtkcombobox.html#signal-gtkcombobox--changed" title="The &quot;changed&quot; gtk.ComboBox Signal">changed</a>"
+</div>
+
+<br>
+<br>
+<br>
+
+<h3>Description</h3>
+GtkBuilder:<br>
+&nbsp;Avec cette lib, dans le glade, il est impossible d'ajouter des
+éléments dans la liste du combo, il faut obligatoirement passer par
+l'option --combobox. Ensuite, utiliser les commandes pygtk pour ajouter
+des éléments, ou par les commandes COMBO@@*.<br>
+<br>
+LibGlade:<br>
+&nbsp;Deux petits bug persistent dans le glade pour les combobox:<br>&nbsp; - Si aucune entrée n'est renseignée, il est impossible par la suite d'en ajouter.<br>&nbsp;Pour
+y remedier, un petite astuce (merci Hizoka), il suffit, dans le glade,
+d'ajouter une entrée, enregistrer, supprimer l'entrée et enregistrer à
+nouveau, comme cela, aucune entrée ne sera par défaut dans le combo. Ou simplement passer par l'option --combobox. Vous
+pourrez gérer ces entrées depuis votre script associé via les commandes pytgk ou glade2script. <br>&nbsp; - Il est impossible de selectionner une entrée par défaut, pour cela, passer par la commande <code><a href="/usr/share/gtk-doc/html/pygtk/class-gtkcombobox.html#method-gtkcombobox--set-active" title="gtk.ComboBox.get_active_text">set_active</a></code> à ajouter au début du script associé.<br>
+<br>
+gtkComboBoxEntry:<br>
+&nbsp;Sur les dernières version de glade, on n'a plus accès aux entry,
+ni depuis glade, ni depuis le script associé. Il faut donc utiliser des
+commandes pygtk pour y avoir accès.<br>
+Pour récupérer/modifier le texte contenue dans l'entry:<code><br>
+echo 'GET@_comboboxentry1_entry.get_text()' <br>echo 'SET@_comboboxentry1_entry.set_text("")'</code><br>
+<br>
+Pour ajouter des icones dans cette entry, impossible depuis glade:<br>
+<div class="codebox"><pre><code>echo "SET@_comboboxentry1_entry.set_property('primary-icon-name','gtk-no')"<br></code><code>echo "SET@_comboboxentry1_entry.set_property('primary-icon-activatable', True)"<br></code><code>echo "SET@_comboboxentry1_entry.connect('icon-press',self.on_entry)"</code><br></pre></div>
+la fonction <em>_comboboxentry1_entry</em> sera appelée lors du clic sur l'icone.<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+
+<hr>
+<br>
+
+<table style="width:100%;">
+  <tbody>
+  <tr>
+    <td class="align_left"><a href="calendar.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="color.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+</body></html>

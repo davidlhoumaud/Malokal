@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+  <title>Gtk.ProgressBar</title>
+</head>
+<body>
+<!-- HEADER -->
+<table style="width:100%;" summary="Navigation header">
+  <tbody>
+  <tr>
+    <td></td>
+    <th class="align_center">Gtk.ProgressBar</th>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="align_left"><a href="menu.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="scale.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+<br>
+<hr>
+<br>
+
+<h2>Gtk.ProgressBar</h2>
+<p>Gtk.ProgressBar</p>
+
+<br>
+<br>
+<br>
+<br>
+
+<h3>Commandes pyGtk</h3>
+<pre class="bleu">Les plus utilisées:<br> <code class="methodsynopsis"><span class="methodname"><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkprogressbar.html#method-gtkprogressbar--pulse" title="gtk.ProgressBar.pulse">pulse</a></span>(<span class="methodparam"></span>)</code> <br> <code class="methodsynopsis"><span class="methodname"><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkprogressbar.html#method-gtkprogressbar--set-text" title="gtk.ProgressBar.set_text">set_text</a></span>(<span class="methodparam"><span class="parameter"><strong class="parameter"><code>text</code></strong></span></span>)</code><br> <code class="methodsynopsis"><span class="methodname"><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtkprogressbar.html#method-gtkprogressbar--set-fraction" title="gtk.ProgressBar.set_fraction">set_fraction</a></span>(<span class="methodparam"><span class="parameter"><strong class="parameter"><code>fraction</code></strong></span></span>)</code> <br><br><br>Documentation pyGtk: <span class="refentrytitle"><a href="/usr/share/gtk-doc/html/pygtk/class-gtkprogressbar.html">gtk.ProgressBar</a></span>
+</pre>
+
+<br>
+<br>
+<br>
+
+<h3>Commandes glade2script</h3>
+<div id="top">
+</div>
+
+<br>
+<br>
+<br>
+
+<h3>Callbacks</h3>
+<div class="orange">
+</div>
+
+
+<br>
+<br>
+<br>
+
+<h3>Signaux</h3>
+<div class="orange">
+</div>
+
+<br>
+<br>
+<br>
+
+<h3>Description</h3>
+
+&nbsp;Exemples d'utilisation:<br>
+
+<br>
+
+<p>La façon de procéder dépends de la commande utilisées,
+soit elle envoie des infos régulièrement sur le stdout ou pas.</p>
+
+<p> Si la commande envoie des infos:<br>
+
+</p>
+
+<div class="gris">
+<pre><code>echo 'SET@_progressbar1.set_text("Scan en cours...")'<br>commande | while read ligne<br>do<br> #on peut traiter le flux en direct pour envoyer infos dans progress<br> echo 'SET@_progressbar1.pulse()'<br>done<br>echo 'SET@_progressbar1.set_fraction(1)' #progress à 100%<br>echo 'SET@_progressbar1.set_text("Scan terminé")'</code></pre>
+
+</div>
+
+<p>Si aucune info ou trop/peu venant de la commande, on peut par
+exemple lancer une boucle sur le pid de l'application. On peut aussi créer un fichier lock dans tmp qui sera supprimer à la fin
+de la commande, boucler sur son existence<br>
+
+</p>
+
+<div class="gris">
+<pre><code>Progress()<br>{<br>while [[ "$(pidof application)" ]]<br>do<br> echo 'SET@_progressbar1.pulse()'<br> sleep 0.5<br>done<br>}<br>application &amp; #lancer application en arrière plan<br>Progress</code></pre>
+
+</div>
+
+<p>&nbsp;Ou encore (proposé par Hizoka)<br>
+
+</p>
+
+<div class="gris">
+<pre><code># Aller retour de la barre pendant le chargement des infos<br>while true; do echo 'SET@_progressbar1.pulse()'; sleep 0.2; done &amp;<br>pid_pulse=$!<br><br><br># Arret de la barre et remise à 0<br>kill ${pid_pulse}<br>echo 'SET@_progressbar1.set_fraction(0)'</code></pre>
+
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+
+<hr>
+<br>
+
+<table style="width:100%;">
+  <tbody>
+  <tr>
+    <td class="align_left"><a href="menu.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="scale.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+</body></html>

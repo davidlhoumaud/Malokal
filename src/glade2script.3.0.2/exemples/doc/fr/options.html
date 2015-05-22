@@ -1,0 +1,588 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+  <title>Command line options</title>
+</head>
+<body>
+<!-- HEADER -->
+<table style="width:100%;">
+<tbody>
+<tr>
+<td></td>
+<th class="align_center">Command line options</th>
+<td></td>
+</tr>
+<tr>
+<td class="align_left"><a href="pygtk.html">Prev</a></td>
+<td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+<td class="align_right"><a href="associe.html">Next</a></td>
+</tr>
+</tbody>
+</table>
+
+<hr><br>
+<h2>Command line options</h2>
+
+<br>
+<br>
+
+<div id="top">
+<b><a href="#clipboard">--clipboard</a><i></i></b><br/>
+<b><a href="#combobox">--combobox</a><i></i></b><br/>
+<b><a href="#debug">-d / --debug</a><i></i></b><br/>
+<b><a href="#embed">--embed</a><i></i></b><br/>
+<b><a href="#glade">-g / --glade</a><i></i></b><br/>
+<b><a href="#gtkbuilder">--gtkbuilder</a><i></i></b><br/>
+<b><a href="#gtkrc">--gtkrc</a><i></i></b><br/>
+<b><a href="#help">-h / --help</a><i></i></b><br/>
+<b><a href="#import_">--import</a><i></i></b><br/>
+<b><a href="#infobulle">--infobulle</a><i></i></b><br/>
+<b><a href="#libglade">--libglade</a><i></i></b><br/>
+<b><a href="#locale">--locale</a><i></i></b><br/>
+<b><a href="#retour">-r / --retour</a><i></i></b><br/>
+<b><a href="#sh">-s / --sh</a><i></i></b><br/>
+<b><a href="#sourceview">--sourceview</a><i></i></b><br/>
+<b><a href="#systray">--systray</a><i></i></b><br/>
+<b><a href="#term_font">--terminal-font</a><i></i></b><br/>
+<b><a href="#term_redim">--terminal-redim</a><i></i></b><br/>
+<b><a href="#terminal">--terminal</a><i></i></b><br/>
+<b><a href="#transparent">--transparent</a><i></i></b><br/>
+<b><a href="#tree">-t / --tree</a><i></i></b><br/>
+<b><a href="#webcache">--webcache</a><i></i></b><br/>
+<b><a href="#webdownload">--webdownload</a><i></i></b><br/>
+<b><a href="#webkit">--webkit</a><i></i></b><br/>
+<b><a href="#weblinkfilter">--weblinkfilter</a><i></i></b><br/>
+<b><a href="#webloaded">--webloaded</a><i></i></b><br/>
+<b><a href="#webmenu">--webmenu</a><i></i></b><br/>
+<b><a href="#weboverlink">--weboverlink</a><i></i></b><br/>
+<b><a href="#webrequest">--webrequest</a><i></i></b><br/>
+<b><a href="#websubmenu">--websubmenu</a><i></i></b>
+</div>
+<br>
+<br>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="clipboard"></a><b>--clipboard</b><i></i>
+    <div class="text">Activate the clipboard
+    </div>
+    <div class="info">option: CLIPBOARD(right)/PRIMARY(middle)/SENCONDARY
+    </div>
+  </div>
+  <div class="exemple">--clipboard=option
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="combobox"></a><b>--combobox</b><i></i>
+    <div class="text">Combobox options. (need with gtkbuilder)
+    </div>
+    <div class="info">Icons or images available.<br/>
+Icon size can't be modify after the starting<br/>
+Images size can be modify after the starting<br/>
+One option per combobox.
+    </div>
+  </div>
+  <div class="exemple">--combobox='@@comboboxentry1@@col|ICON<br/>
+--combobox='@@combobox1@@col|IMG
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="debug"></a><b>-d / --debug</b><i></i>
+    <div class="text">Debugging console output
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="embed"></a><b>--embed</b><i></i>
+    <div class="text">Embeds an application that supports it natively.
+    </div>
+    <div class="info">replace by %s the windowID needed by the embed app
+    </div>
+  </div>
+  <div class="exemple">--embed="_drawingarea1@@mplayer -idle -slave -quiet -vo xv -wid %s -input file=/tmp/fifomplay"
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="glade"></a><b>-g / --glade</b><i></i>
+    <div class="text">Glade file
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="gtkbuilder"></a><b>--gtkbuilder</b><i></i>
+    <div class="text">Use the GtkBuilder librairy instead of Libglade (default).
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="gtkrc"></a><b>--gtkrc</b><i></i>
+    <div class="text">Use rc (or css with gtk3) style file instead of default style
+    </div>
+    <div class="info">gtkrcfile: absolute path of the Gtk rc style file
+    </div>
+  </div>
+  <div class="exemple">--gtkrc="stylefile"
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="help"></a><b>-h / --help</b><i></i>
+    <div class="text">Display the help
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="import_"></a><b>--import</b><i></i>
+    <div class="text">Import as module instead of using the FIFO. <a href="associe.html">détails</a>
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">--import='path'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="infobulle"></a><b>--infobulle</b><i></i>
+    <div class="text">This option, if the callback <i> query_tooltip </ i> has been specified, display a tooltip when mousing over the columns in a treeview
+    </div>
+    <div class="info">It can display text in a column in another overview. An option for treeview<br/>
+col1: colonne cible<br/>
+col2: colonne texte<br/>
+ In a survey of the column 1, the contents of column 2 will be displayed in the tooltip
+    </div>
+  </div>
+  <div class="exemple">--infobulle="@@treeview@@col1:col2,col:col2"
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="libglade"></a><b>--libglade</b><i></i>
+    <div class="text">Use the Libglade librairy instead of GtkBuilder (deprecated).
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="locale"></a><b>--locale</b><i></i>
+    <div class="text">Folder path of the "locale".
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="retour"></a><b>-r / --retour</b><i></i>
+    <div class="text">gtk commands for outputs.
+    </div>
+    <div class="info">like GET@ command, variables had _ instead dot.
+    </div>
+  </div>
+  <div class="exemple">-r '_text1.get_text, window1.get_position, treeview1'
+  </div>
+  <div class="return">${_text1_get_text}, ${window1_get_position} et ${treeview1}
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="sh"></a><b>-s / --sh</b><i></i>
+    <div class="text">Nom du script associé
+    </div>
+    <div class="info">à utiliser pour donner un nom différent ou pour donner des arguments à ce script<br/>
+sinon, le script associé devra porter le même nom que le glade et ce trouver dans le même dossier que ce dernier
+    </div>
+  </div>
+  <div class="exemple">-s './Test.sh "arg1" "arg2"'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="sourceview"></a><b>--sourceview</b><i></i>
+    <div class="text">Use a sourceview rather than a textview.
+    </div>
+    <div class="info">name: name of sourceview (textview)<br/>
+box: display box<br/>
+Gtk2 dependances: python-gtksourceview2.<br/>
+Gtk3 dependances: gir1.x-gtksource<br/>
+environnement variables loaded: G2S_SOURCEVIEW_STYLE, G2S_SOURCEVIEW_LANG
+    </div>
+  </div>
+  <div class="exemple"> --sourceview="name,box"
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="systray"></a><b>--systray</b><i></i>
+    <div class="text">Initialize a notify icon.
+    </div>
+    <div class="info">Use pygtk command SET@systray... or callbacks.<br/>
+name: name of systray<br/>
+menu: associated contextmenu or None<br/>
+img: absolute image path or icon name<br/>
+infobulle: tooltip text
+    </div>
+  </div>
+  <div class="exemple"> --systray="name@menu@img@infobulle"
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="term_font"></a><b>--terminal-font</b><i></i>
+    <div class="text">Loads a font name string
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">--terminal-font='serif,monospace bold italic condensed 10'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="term_redim"></a><b>--terminal-redim</b><i></i>
+    <div class="text">Automatic terminal resize.
+    </div>
+    <div class="info">Add a viewport widget to the received container terminal<br/>
+Add "redim_term" callback to the "size-allocate" signal of the viewport
+    </div>
+  </div>
+  <div class="exemple">
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="terminal"></a><b>--terminal</b><i></i>
+    <div class="text">Activate VTE terminal
+    </div>
+    <div class="info">widget: widget container of the terminal, a hbox for example (don't forget _ before  name)<br/>
+width: terminal width<br/>
+heigth: terminal heigth
+    </div>
+  </div>
+  <div class="exemple">--terminal='widget:widthxheight'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="transparent"></a><b>--transparent</b><i></i>
+    <div class="text">Window background transparency. (not available for gtk3)
+    </div>
+    <div class="info">trans: 0 à 1<br/>
+color: #ffffff
+    </div>
+  </div>
+  <div class="exemple">--transparent='name:trans/None:color/None'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="tree"></a><b>-t / --tree</b><i></i>
+    <div class="text">La gestion du treeview est assez complète, beaucoup de possiblités sont offertes, check, radio, progressbar, font, etc, etc ...
+    </div>
+    <div class="info">OPTIONS: <a href="more.html#tree_options">More ...</a><br/>
+ Titre colonne [%%size] [%%editable]<br/>
+ ICON [%%size] [%%titre] [%%clic]<br/>
+ IMG [%%titre] [%%clic]<br/>
+ PROGRESS [%%Titre] [%%size]<br/>
+ COMBO [%%Titre] [%%size] [%%ligne] [%%ligne]<br/>
+ CHECK [%%Titre]<br/>
+ RADIO [%%Titre]<br/>
+ FONT<br/>
+ BACK<br/>
+ FORE<br/>
+ HIDE<br/>
+@@treeview1@@ICON%%2%%clic|Colonne 1|Colonne 2%%100|HIDE|FONT<br/>
+@@treeview1@@TitreColonne%%editable|FONT|BACK|FORE
+    </div>
+  </div>
+  <div class="exemple">-t '@@treeview@@option@@option@@option'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="webcache"></a><b>--webcache</b><i></i>
+    <div class="text">Puts in cache filtered via the pattern
+    </div>
+    <div class="info">dossier: folder path or None (/tmp/webcache)<br/>
+pattern: Regular expression<br/>
+dialog: verbose / quiet
+    </div>
+  </div>
+  <div class="exemple">--­­­­webcache="webview:folder:pattern:dialog"
+  </div>
+  <div class="return">cache@url
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="webdownload"></a><b>--webdownload</b><i></i>
+    <div class="text">Action to perform during a download request
+    </div>
+    <div class="info">choice: UserChoose/UserSave/GetLink<br/>
+UserChoose calls the function with the save destination user choice<br/>
+UserSave: saves a file directly from the user choice, also calls the function<br/>
+GetLink: simple function call
+    </div>
+  </div>
+  <div class="exemple">--­­­­webdownload="webview:choice
+  </div>
+  <div class="return">UserChoose@destination, UserSave@destination, GetLink@url 
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="webkit"></a><b>--webkit</b><i></i>
+    <div class="text">Ajoute un interpréteur html
+    </div>
+    <div class="info">Dépendances python-webkit.<br/>
+Plusieurs interpréteurs peuvent être ajouté, une option pour chacun.<br/>
+Utiliser les commandes pygtk pour webkit. <a href="http://webkitgtk.org/reference/webkitgtk-webkitwebview.html">ici</a><br/>
+ Pour appeler une fonction du script associé, lien => g2s:Mafonction arg<br/>
+ Pour appeler une commande glade2script, lien => G2S:EXIT@@<br/>
+name: Nom donné pour le navigateur.<br/>
+box: Le conteneur du navigateur, une hbox par exemple.
+    </div>
+  </div>
+  <div class="exemple">--webkit='name,box'
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="weblinkfilter"></a><b>--weblinkfilter</b><i></i>
+    <div class="text">Filters each user click on links via the pattern
+    </div>
+    <div class="info">pattern: Regular expression
+    </div>
+  </div>
+  <div class="exemple">--­­­­weblinkfilter="webview:pattern"
+  </div>
+  <div class="return">linkfilter@url
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="webloaded"></a><b>--webloaded</b><i></i>
+    <div class="text">Calls the function when the html is loaded
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">--­­­­webloaded="webview,webview"
+  </div>
+  <div class="return">loaded
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="webmenu"></a><b>--webmenu</b><i></i>
+    <div class="text">Creates a context menu
+    </div>
+    <div class="info">item:function:value/html<br/>
+item: menu label<br/>
+function: function to call<br/>
+value: value of the element under the cursor<br/>
+html: html of the element under the cursor<br/>
+separator:None:None
+    </div>
+  </div>
+  <div class="exemple">--­­­­webmenu="webview::item::function::value/html"
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="weboverlink"></a><b>--weboverlink</b><i></i>
+    <div class="text">Calls the function when cursor goes above the links
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="exemple">--­­­­weboverlink="webview,webview"
+  </div>
+  <div class="return">overlink@url
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="webrequest"></a><b>--webrequest</b><i></i>
+    <div class="text">Filters the http requests
+    </div>
+    <div class="info">pattern: All / item<br/>
+All: calls the function with all the requests as argument<br/>
+item: filters via the regular expression (does not display the filtered requests in the webview)
+    </div>
+  </div>
+  <div class="exemple">--­­­­webrequest="webview:pattern"
+  </div>
+  <div class="return">request@http://...
+  </div>
+</div>
+
+
+<div class="boite">
+  <div class="content_boite">
+    <a name="websubmenu"></a><b>--websubmenu</b><i></i>
+    <div class="text">Creates a context sub-menu
+    </div>
+    <div class="info">menuitem: label of the context menu from where the sub-menu will appear<br/>
+item:function:value/html<br/>
+item: menu label<br/>
+function: function to call<br/>
+value: value of the element under the cursor<br/>
+html: html of the element under the cursor<br/>
+separator:None:None
+    </div>
+  </div>
+  <div class="exemple">--­­­­websubmenu="menuitem::item::function::value/html"
+  </div>
+  <div class="return">
+  </div>
+</div>
+
+<br>
+<br>
+<hr>
+<!-- FOOTER -->
+<table style="width:100%;">
+<tbody>
+<tr>
+<td class="align_left"><a accesskey="p" href="pygtk.html">Prev</a></td>
+<td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+<td class="align_right"><a href="associe.html">Next</a></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

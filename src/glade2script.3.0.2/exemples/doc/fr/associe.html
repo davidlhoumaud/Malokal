@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+  <title>Script Associé</title>
+</head>
+<body>
+<!-- HEADER -->
+<table style="width:100%;" summary="Navigation header">
+  <tbody>
+  <tr>
+    <td></td>
+    <th class="align_center">Script Associé</th>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="align_left"><a href="options.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="traduire.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+<br>
+<hr><br>
+
+<h2>Script associé</h2>
+<br>
+Le
+script associé pourra être écrit dans différents langages, il doit
+juste créer un fifo et rester à l'écoute de ce fichier (pour charger
+dans l'environnement des variables ou appeler des fonctions), et
+envoyer sur le stdout des commandes (echo, print selon langage).
+<br>
+<br>
+Dans ce fichier FIFO, les données écrites seront de deux types:<br>
+
+<pre class="content_boite">
+# chargement d'une variable
+GET@WidgetName_action=&#8221;resultat&#8221;
+
+# appel d'une focntion
+WidgetName Argument
+</pre>
+
+<br>
+<br>
+
+<h3>Exemple en bash</h3>
+<pre class="content_boite">
+#! /bin/bash
+
+création du fifo
+
+fonction()
+{ # fonction du widget
+echo "SET@_label.set_text('Bonjour le monde !')"
+}
+
+boucle de réception
+
+exit 
+</pre>
+
+<br>
+<br>
+<pre class="content_boite">
+# Création du fifo
+PID=$$
+FIFO=/tmp/FIFO${PID}
+mkfifo $FIFO
+</pre>
+
+<pre class="content_boite">
+# boucle de réception
+while read ligne; do
+  if [[ "$ligne" =~ GET@ ]]; then
+    eval ${ligne#*@}
+    echo "DEBUG => in boucle bash :" ${ligne#*@}
+  else
+    echo "DEBUG=> in bash NOT GET" $ligne
+    $ligne
+  fi
+done < <(while true; do
+read entree &lt; /tmp/FIFO
+[[ "$entree" == "QuitNow" ]] && break
+echo $entree
+done)
+</pre>
+
+<pre class="content_boite">
+# boucle de réception proposée par Totor du forum ubuntu
+exec 4&lt;&gt;/tmp/FIFO
+while read -u 4 ligne
+  do
+    if [[ "$ligne" == "QuitNow" ]]; then
+      break
+    elif [[ "$ligne" =~ GET@ ]]; then
+      eval ${ligne#*@}
+      echo "DEBUG =&gt; in boucle bash :" ${ligne#*@}
+    else
+      echo "DEBUG=&gt; in bash NOT GET" $ligne
+      $ligne
+    fi
+  done
+exec 4&gt;&amp;- 4&lt;&amp;-
+</pre>
+<br>
+<br>
+<br>
+
+
+<h3><a name="pythonsans"></a>Exemple en python</h3>
+
+
+&nbsp;Il faut indiquer l'option <a href="option.html#import">--import</a><br>
+
+&nbsp;On peut également se passer du script de lancement go_*.py, il est remplacé par la derniere condition.<br>
+
+<br>
+<pre class="content_boite">
+#! /usr/bin/env python
+# -*- coding:Utf­8 ­-*-
+
+   
+class Action(threading.Thread):
+    '''
+    Cette class doit s'appeler tel que.
+    '''
+    def __init__(self, g2s):
+        '''
+        g2s = instance de glade2script
+        '''
+        threading.Thread.__init__(self)
+        # Appeler la class from_import pour communiquer avec glade2script
+        self.to_glade = g2s.from_import
+       
+    def run(self):
+        ''' Fonction nécessaire'''
+        pass
+    
+    def quit_now(self):
+        ''' Fonction nécessaire'''
+        pass
+           
+    def btn_traduire(self, arg=None):
+        self.to_glade('''SET@_label.set_text('Bonjour le monde !')''')
+
+
+if __name__ == '__main__':
+    path_fichier = os.path.abspath(__file__)
+    path_dossier = os.path.dirname(path_fichier)
+    os.chdir(path_dossier)
+    os.system('./glade2script.py -g ./Test.glade -d --import="%s"' % path_fichier)
+</pre>
+
+<br>
+
+ Pour avoir le retour directement, il faut ajouter l'argument True, sinon l'action sera identique qu'en bash, une fonction sera appelée ou/et une variable chargée dans l'environnement.
+<pre class="content_boite">
+ liste = self.to_glade('MULTI@@GET@@get_text()@@_entry_name, _entry_os', True)
+</pre> 
+ Pour avoir le retour des commandes HIZO, mais attention à la queue GTK, cette solution peut poser problème !
+<pre class="content_boite">
+ text = self.g2s.TEXTHIZOTAG('TEXT@@HIZOTAG@@_textview_saisie', True)
+</pre>
+<hr><br>
+
+
+<table style="width:100%;">
+  <tbody>
+  <tr>
+    <td class="align_left"><a href="options.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="traduire.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+</body></html>

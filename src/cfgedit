@@ -1,0 +1,28 @@
+#! /bin/bash
+
+if [[ "$1" == "-r" ]]; then
+    [[ ! -f "$3" ]] && exit 1 || egrep "^$2\:" "$3" | awk -F"$2:" '{ print $2 }'
+    exit 0
+elif [[ "$1" == "-w" ]]; then
+    [[ ! -f "$4" ]] && touch "$4"
+    [[ $(egrep "^$2\:" "$4" ) ]] && sed -r -i "s%^${2}\:.*$%${2}\:${3}%" "$4" || echo "${2}:${3}" >> "$4"
+    exit 0
+elif [[ "$1" == "-d" ]]; then
+    [[ ! -f "$3" ]] && exit 1
+    [[ $(grep "$2:" "$3" ) ]] && sed -r -i "/^${2}\:/d" "$3" || exit 1
+    exit 0
+else
+    echo "CfgEdit v0.2
+by David lhoumaud <craft@ckdevelop.org>
+GNU/GPL v3
+OPTIONS:
+    -r      Read value of key
+        cfgedit -r \"key\" \"file\"
+        
+    -w      Write key and value
+        cfgedit -w \"key\" \"value\" \"file\"
+        
+    -d      Delete key and value
+        cfgedit -d \"key\" \"file\""
+    exit 1
+fi

@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+  <title>Gtk.TreeView</title>
+</head>
+<body>
+<!-- HEADER -->
+<table style="width:100%;" summary="Navigation header">
+  <tbody>
+  <tr>
+    <td></td>
+    <th class="align_center">Gtk.TreeView</th>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="align_left"><a href="textview.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="window.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+<br>
+<hr>
+<br>
+
+<h2>Gtk.TreeView</h2>
+<p>Gtk.TreeView</p>
+
+<br>
+<br>
+<br>
+<br>
+
+<h3>Commandes pyGtk</h3>
+<pre class="bleu">Les plus utilisées: <br><code class="methodsynopsis"><span class="methodname"><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtktreeview.html#method-gtktreeview--set-cursor" title="gtk.TreeView.set_cursor">set_cursor</a></span>(<span class="methodparam"><span class="parameter"><strong class="parameter"><code>path</code></strong></span></span><span class="methodparam"><span class="initializer"></span></span>)</code><br><br>Documentation pyGtk: <span class="refentrytitle"><a href="/usr/share/gtk-doc/html/pygtk/class-gtktreeview.html">gtk.Treeview</a></span>
+</pre>
+
+<br>
+<br>
+<br>
+
+<h3>Commandes glade2script</h3>
+<div id="top">
+<b><a href="commandes.html#TREEBOTTOM">TREE@@BOTTOM</a><i>@@treeview[@@line]</i></b><br>
+<b><a href="commandes.html#TREECELL">TREE@@CELL</a><i>@@treeview@@line[,col]@@data</i></b><br>
+<b><a href="commandes.html#TREECLEAR">TREE@@CLEAR</a><i>@@treeview</i></b><br>
+<b><a href="commandes.html#TREEDOWN">TREE@@DOWN</a><i>@@treeview[@@line]</i></b><br>
+<b><a href="commandes.html#TREEEND">TREE@@END</a><i>@@treeview@@data</i></b><br>
+<b><a href="commandes.html#TREEFIND">TREE@@FIND</a><i>@@treeview@@col/None@@motif</i></b><br>
+<b><a href="commandes.html#TREEFINDDEL">TREE@@FINDDEL</a><i>@@treeview@@col/None@@motif</i></b><br>
+<b><a href="commandes.html#TREEFINDSELECT">TREE@@FINDSELECT</a><i>@@treeview@@col/None@@motif</i></b><br>
+<b><a href="commandes.html#TREEFORCE_SELECT">TREE@@FORCE_SELECT</a><i>@@treeview</i></b><br>
+<b><a href="commandes.html#TREEGET">TREE@@GET</a><i>@@treeview</i></b><br>
+<b><a href="commandes.html#TREEHIZO">TREE@@HIZO</a><i>@@treeview</i></b><br>
+<b><a href="commandes.html#TREEIMG">TREE@@IMG</a><i>@@treeview@@data|data@@colonne@@size</i></b><br>
+<b><a href="commandes.html#TREEINSERT">TREE@@INSERT</a><i>@@treeview@@line@@data</i></b><br>
+<b><a href="commandes.html#TREELOAD">TREE@@LOAD</a><i>@@treeview@@fichier</i></b><br>
+<b><a href="commandes.html#TREEPROG">TREE@@PROG</a><i>@@treeview@@line,col@@value</i></b><br>
+<b><a href="commandes.html#TREESAVE">TREE@@SAVE</a><i>@@treeview@@fichier</i></b><br>
+<b><a href="commandes.html#TREETOP">TREE@@TOP</a><i>@@treeview[@@line]</i></b><br>
+<b><a href="commandes.html#TREEUP">TREE@@UP</a><i>@@treeview[@@line]</i></b><br>
+</div>
+
+<br>
+<br>
+<br>
+
+<h3>Callbacks</h3>
+<div class="orange">
+<a href="signaux.html#on_treeview">on_treeview</a><br>
+<a href="signaux.html#select_up">select_up</a><br>
+<a href="signaux.html#select_down">select_down</a><br>
+</div>
+
+
+<br>
+<br>
+<br>
+
+<h3>Signaux</h3>
+<div class="orange">
+"<a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtktreeview.html#signal-gtktreeview--cursor-changed" title="The &quot;cursor-changed&quot; gtk.TreeView Signal">cursor-changed</a>"<br>
+"<a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtktreeview.html#signal-gtktreeview--row-activated" title="The &quot;row-activated&quot; gtk.TreeView Signal">row-activated</a>"<br>
+</div>
+
+<br>
+<br>
+<br>
+
+<h3>Description</h3>
+
+&nbsp;Les données du treeview peuvent être chargées au lancement de glade2script (Voir  options <a href="option.html#tree">-t / ­­--tr</a> )<br>
+&nbsp;Elles peuvent aussi être chargées via les commandes <small><a href="commande_glade.html#TREEEND">TREE@@END</a><span class="bold-italic"></span></small>,&nbsp;<small><a href="commande_glade.html#TREECELL">TREE@@CELL</a><span class="bold-italic"></span></small> ou <small><a href="commande_glade.html#TREEINSERT">TREE@@INSERT</a><span class="bold-italic"></span></small>.
+&nbsp;Un fichier peut aussi être utilisé via la commande <small><a href="commande_glade.html#TREELOAD">TREE@@LOAD</a><span class="bold-italic"></span></small>.<br>
+
+
+&nbsp;L'accès aux lignes se fait par leur numéro. L'accès à la ligne
+enfant s'écrit 'line:enfant' (1:0). En cas de chargement via un fichier, il est
+possible d'indiquer en premier élément le numéro de ligne, nécessaire
+pour la création d' enfant, ce numéro ne sera pas modifier en cas de
+sauvegarde ou récupération de données (en cas d'insertion ou de
+déplacement par l'user).<br>
+&nbsp;L'indexation des lignes et colonnes commencent à zéro.<br>
+&nbsp;Pour les éléments envoyées dans le treeview, la séparation de colonne est le |
+
+<br>
+<br>
+<br>
+<br>
+
+<hr>
+<br>
+
+<table style="width:100%;">
+  <tbody>
+  <tr>
+    <td class="align_left"><a href="textview.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="window.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+</body></html>

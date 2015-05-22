@@ -1,0 +1,165 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+
+import Image, ImageDraw, sys, os
+
+def aide():
+    print("""GECL v0.1
+Graph Editor Command Line
+by David Lhoumaud <craft@ckdevelop.org>
+GNU/GPL v3
+
+USAGE:
+    SERVER:
+        new         Create new image
+            new <name> <width> <heigth> <background color>
+        load        Load a existing image
+            load <name> <filename>
+
+    CLIENT:
+        DRAW:
+            pixel
+                gecl <name> pixel <x> <y> <color>
+            line
+                gecl <name> line <start x> <start y> <end x> <end y> <color> <width line>
+            arc
+                gecl <name> arc <x> <y> <start angle> <end angle> <color>
+            rectangle
+                gecl <name> rectangle <start x> <start y> <end x> <end y> <background color> <border color>
+            ellipse
+                gecl <name> ellipse <start x> <start y> <end x> <end y> <background color> <border color>
+            text 
+                gecl <name> text <x> <y> <text> <color>
+
+        IMAGE:
+            flip
+                gecl <name> flip <v or h>
+                    v = vertical
+                    h = horizontal
+            paste
+                gecl <name> paste <x> <y> <image mask>
+
+
+    CASE:
+        <x>, <y>, <start x>, <start y>, <end x>, <end y>, <start angle>, <end angle>, <width>, <height>, <width line>:
+            integer value
+
+        <color>, <background color>, <border color>:
+            integer value (without space character)
+                red<0-255>,green<0-255>,blue<0-255>,alpha<0-255>
+                    black =         0,0,0,255
+                    white =         255,255,255,255
+                    transparent =   0,0,0,0
+
+        <text>, <name>, <filename>, <image mask>:
+            string value
+""")
+    sys.exit()
+
+def _LOAD(nlayer,filename):
+    IMG = Image.open(filename)
+    _EDITOR(IMG,nlayer)
+
+def _NEW(nlayer,w,h, background_color):
+    bc= background_color.split(',')
+    IMG = Image.new("RGBA", (w,h), (int(bc[0]),int(bc[1]),int(bc[2]),int(bc[3])))
+    _EDITOR(IMG,nlayer)
+
+def _SET(cmd):
+    while os.path.exists('recv.tmp'):
+        #print "wait please"
+        pass
+    print "BEGIN "+cmd
+    send_cmd = open('recv.tmp', 'w')
+    send_cmd.write(cmd)
+    send_cmd.close()
+    while os.path.exists('recv.tmp'): pass
+    print "END "+cmd
+
+def _EDITOR(IMG,nlayer):
+    draw= ImageDraw.Draw(IMG)
+    _START=True
+    while _START:
+        if os.path.exists('recv.tmp'):
+            recv= open('recv.tmp', 'r')
+            md= recv.readline().rstrip('\n\r')
+            cmd= md.split(' ')
+            
+            if len(cmd) > 1:
+                if cmd[0] == nlayer:
+                    recv.close()
+                    if cmd[1] == 'quit':
+                        _START=False
+                    elif cmd[1] == 'save':
+                        #save filename
+                        IMG.save(cmd[2], "PNG")
+                        _START=False
+                        
+                    #DRAW
+                    elif cmd[1] == 'pixel':
+                        fcolor=cmd[4].split(',')
+                        draw.point(int(cmd[2]), int(cmd[3]), fill=(int(fcolor[0]),int(fcolor[1]),int(fcolor[2]),int(fcolor[3])), width=int(cmd[7]))
+                    elif cmd[1] == 'line':
+                        fcolor=cmd[6].split(',')
+                        draw.line((int(cmd[2]), int(cmd[3])) + (int(cmd[4]), int(cmd[5])), fill=(int(fcolor[0]),int(fcolor[1]),int(fcolor[2]),int(fcolor[3])), width=int(cmd[7]))
+                    elif cmd[1] == 'arc':
+                        fcolor=cmd[8].split(',')
+                        draw.arc((int(cmd[2]), int(cmd[3]),int(cmd[4]), int(cmd[5])), int(cmd[6]), int(cmd[7]), fill=(int(fcolor[0]),int(fcolor[1]),int(fcolor[2]),int(fcolor[3])))
+                    elif cmd[1] == 'rectangle':
+                        fcolor=cmd[6].split(',')
+                        ocolor=cmd[7].split(',')
+                        draw.rectangle([int(cmd[2]), int(cmd[3]), int(cmd[4]), int(cmd[5])], fill=(int(fcolor[0]),int(fcolor[1]),int(fcolor[2]),int(fcolor[3])), outline=(int(ocolor[0]),int(ocolor[1]),int(ocolor[2]),int(ocolor[3])))
+                    elif cmd[1] == 'ellipse':
+                        fcolor=cmd[6].split(',')
+                        ocolor=cmd[7].split(',')
+                        draw.ellipse([int(cmd[2]), int(cmd[3]), int(cmd[4]), int(cmd[5])], fill=(int(fcolor[0]),int(fcolor[1]),int(fcolor[2]),int(fcolor[3])), outline=(int(ocolor[0]),int(ocolor[1]),int(ocolor[2]),int(ocolor[3])))
+                    elif cmd[1] == 'text':
+                        txtcmd=md.split('"')
+                        fcolor=txtcmd[2].split(',')
+                        draw.text((int(cmd[2]), int(cmd[3])), txtcmd[1], fill=(int(fcolor[0]),int(fcolor[1]),int(fcolor[2]),int(fcolor[3])))
+                        
+                    #IMAGE
+                    elif cmd[1] == 'flip':
+                        if cmd[2] == 'h':
+                            out=IMG.transpose(Image.FLIP_LEFT_RIGHT)
+                            out.save(nlayer+'.tmp', "PNG")
+                            _START=False
+                        elif cmd[2] == 'v':
+                            out=IMG.transpose(Image.FLIP_TOP_BOTTOM)
+                            out.save(nlayer+'.tmp', "PNG")
+                            _START=False
+                        del out
+                    elif cmd[1] == 'paste':
+                        img_mask = Image.open(cmd[4])
+                        IMG.paste(img_mask, (int(cmd[2]), int(cmd[3])), img_mask)
+                        IMG.save(nlayer+'.tmp', "PNG")
+                        _START=False
+
+                    recv.close
+                    os.remove('recv.tmp')
+    del draw
+    sys.exit()
+
+if len(sys.argv) > 2:
+    if sys.argv[1] == 'load':
+        _LOAD(sys.argv[2],sys.argv[3])
+    elif sys.argv[1] == 'new':
+        background_color=sys.argv[5]
+        _NEW(sys.argv[2],int(sys.argv[3]),int(sys.argv[4]), background_color)
+    else:
+        run_cmd=''
+        i=1
+        while i < len(sys.argv):
+            if 'text' in sys.argv:
+                if i == 5:
+                    icmd='"'+sys.argv[i]+'"'
+                else:
+                    icmd=sys.argv[i]
+            else:
+                icmd=sys.argv[i]
+                
+            run_cmd=run_cmd+icmd+' '
+            i+=1
+        _SET(run_cmd)
+else:
+    aide()

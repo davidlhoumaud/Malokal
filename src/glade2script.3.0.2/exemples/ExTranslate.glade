@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="2.16"/>
+  <object class="GtkWindow" id="window1">
+    <property name="width_request">400</property>
+    <property name="height_request">400</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="border_width">10</property>
+    <signal name="destroy" handler="gtk_widget_destroy" swapped="no"/>
+    <child>
+      <object class="GtkScrolledWindow" id="scrolledwindow1">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <child>
+          <object class="GtkViewport" id="viewport1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="resize_mode">queue</property>
+            <child>
+              <object class="GtkLabel" id="label1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">    &lt;big&gt;&lt;b&gt;HOW TO TRANSLATE  APP&lt;/b&gt;&lt;/big&gt;
+
+&lt;b&gt;Dependances:&lt;/b&gt; xgettext msgfmt msginit
+
+&lt;b&gt;Generate .mo file&lt;/b&gt;
+&lt;i&gt;xgettext -o Test.pot Test.glade Test.sh
+#ou xgettext -o Test.pot *.glade *.sh
+msginit -i Test.pot -o Test.po
+Translate de .po file then:
+msgfmt Test.po -o Test.mo&lt;/i&gt;
+
+The .mo file was used for the translation.
+It should be in a folder 'locale' in the current directory 
+(or use --locale option to change the folder destination).
+&lt;i&gt;dirscripts/locale/fr/LC_MESSAGES/Test.mo&lt;/i&gt;
+
+&lt;b&gt;In your bash script:&lt;/b&gt;
+&lt;i&gt;chemin="$(cd "$(dirname "$0")";pwd)"
+set -a
+source gettext.sh
+set +a
+export TEXTDOMAIN=Test    #here the name of .mo, .glade, ....
+export TEXTDOMAINDIR="${chemin}/locale"
+. gettext.sh&lt;/i&gt;
+
+Text to translate into the script:
+&lt;i&gt;$(eval_gettext "label à traduire")&lt;/i&gt;
+
+With a glade2script command:
+&lt;i&gt;echo "SET@_label1.set_text('$(eval_gettext "label à traduire")')"&lt;/i&gt;
+</property>
+                <property name="use_markup">True</property>
+                <property name="wrap">True</property>
+                <property name="selectable">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

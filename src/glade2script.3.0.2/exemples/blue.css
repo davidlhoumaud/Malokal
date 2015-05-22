@@ -1,0 +1,39 @@
+#window1 {
+    background-color: #FF0000;
+}
+
+#treeview1 {
+    color: #FF0000;
+    background-color: #FFFF00;
+}
+
+#treeview1:selected {
+    color: #FFFF00;
+    background-color: #FF0000;
+}
+
+#treeview2 {
+    background-image: -gtk-gradient (linear,
+        left top, right bottom,
+        from(#FFFF00), to(#FF0000));
+}
+#eventbox1 {
+    background-image: -gtk-gradient (radial,
+        center center,0,
+        center center,0.5,
+        from(#FFFF00), to(#FF0000));
+}
+
+#eventlabel {
+    box-shadow: 5 5 #FFFF00;
+}
+
+#_progressbar1:selected {
+    background-color: #FFFF00;
+    background-image: -gtk-gradient (radial,
+        center center,0,
+        center center,0.5,
+        from(#FFFF00), to(#FF0000));
+
+}
+

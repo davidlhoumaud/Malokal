@@ -1,0 +1,29 @@
+
+
+GtkTextView {
+    font: Ubuntu Mono 12;
+}
+GtkFrame GtkButton {
+    color: @bg_color;
+}
+
+GtkFrame GtkButton:hover {
+    background-image: -gtk-gradient (radial,
+        center center,0,
+        center center,0.7,
+        from(#ff6a00), to(@bg_color));
+}
+#btn_exec { 
+    color: @bg_color;
+    background-image: -gtk-gradient (radial,
+        center center,0,
+        center center,0.7,
+        from(#ff6a00), to(@bg_color)); }
+
+#btn_exec:hover {
+    background-image: -gtk-gradient (radial,
+        center center,0,
+        center center,0.7,
+        from(#ff0000), to(@bg_color));
+
+}

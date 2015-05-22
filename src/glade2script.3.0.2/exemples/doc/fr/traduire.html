@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+  <title>Traduire Une Application</title>
+</head>
+<body>
+<!-- HEADER -->
+<table style="width:100%;" summary="Navigation header">
+  <tbody>
+  <tr>
+    <td></td>
+    <th class="align_center">Traduire Une Application</th>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="align_left"><a href="associe.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="gtk-widget-reference.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+<br>
+<hr><br>
+
+<h2>Traduire une application</h2>
+<br>
+xgettext, msginit et msgfmt doivent être installé ( défaut sous ubuntu ).<br>
+ Il faut un dossier locale dans le dossier du script/glade. Un sous ­dossier du choix de la langue (fr, de, es) et un sous ­dossier LC_MESSAGES<br>
+ Renseignez l'option --locale pour utiliser un autre dossier de traduction 'locale'
+<pre class="content_boite">
+dirscripts/locale/fr/LC_MESSAGES
+</pre>
+<br>
+<h3>Au début du script associé *</h3>
+<pre class="content_boite">
+#! /bin/bash
+chemin="$(cd "$(dirname "$0")";pwd)"
+###Pour exporter la librairie de gettext.
+set -a
+source gettext.sh
+set +a
+export TEXTDOMAIN=Test    # ici le nom du .mo, .glade, ....
+export TEXTDOMAINDIR="${chemin}/locale"
+. gettext.sh
+</pre>
+<pre class="content_boite">
+# Texte à traduire dans le script
+$(eval_gettext "label à traduire")
+</pre>
+<pre class="content_boite">
+Avec une commande glade2script
+echo "SET@_label1.set_text('$(eval_gettext "label à traduire")')"
+</pre>
+<h3>Création des fichiers de traduction</h3>
+On crée d'abord un fichier .dot, qui servira de base pour créer le .po
+ Les noms des .po et .mo (.dot) devront avoir le même nom que le glade. 
+<pre class="content_boite">
+cd ./dirscript
+xgettext -o Test.pot Test.glade Test.sh
+#ou xgettext -o Test.pot *.glade *.sh
+msginit -i Test.pot -o Test.po
+</pre>
+ C'est dans ce fichier .po qu'on indiquera les traductions.
+<br>
+<br>
+Ensuite :
+<pre class="content_boite">
+msgfmt Test.po -o Test.mo
+</pre>
+C'est ce fichier .mo qui servira à la traduction de l'interface et du script. Il doit être collé dans le dossier  LC_MESSAGES de la langue traduite.
+<br>
+<br>
+<i>* copié sur un script de frafa du forum ubuntu</i>
+<br>
+<hr><br>
+
+
+<table style="width:100%;">
+  <tbody>
+  <tr>
+    <td class="align_left"><a href="associe.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="gtk-widget-reference.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+</body></html>
+
+
+
+
+

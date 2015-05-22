@@ -1,0 +1,109 @@
+#! /usr/bin/env python
+# -*- coding:Utf­8 ­-*-
+
+import sys,tagpy
+
+def ms2hms(arg):
+    mili1 = int(arg) % 1000
+    mili2 = int(arg) - mili1
+    seconde1 = (mili2 / 1000) % 60
+    minute11 = ((mili2 / 1000) - seconde1) / 60
+    minute21 = minute11 % 60
+    heure1 = (minute11 - minute21) / 60
+    print str(heure1)+':'+str(minute21)+':'+str(seconde1)+'.'+str(mili1)
+   
+def hms2ms(arg):
+    hours, minutes, seconds = (["0", "0"] + arg.split(":"))[-3:]
+    hours = int(hours)
+    minutes = int(minutes)
+    seconds = float(seconds)
+    miliseconds = int(3600000 * hours + 60000 * minutes + 1000 * seconds)
+    print str(miliseconds)
+
+def fms2hms(arg):
+    hours, milliseconds = divmod(int(arg), 3600000)
+    minutes, milliseconds = divmod(int(arg), 60000)
+    seconds = float(milliseconds) / 1000
+    s = "%i:%02i:%06.3f" % (hours, minutes, seconds)
+    return s
+
+def gettags(filename):
+    f = tagpy.FileRef(filename)
+    t = f.tag()
+    tp = f.audioProperties()
+    ms=tp.length*1000
+    out='|'+str(t.track)+'|'+t.title+'|'+t.album+'|'+t.artist+'|'+t.genre+'|'+str(t.year)+'|'+fms2hms(ms)+'|'+str(ms)+';'+str(tp.bitrate)+';'+str(tp.sampleRate)+';'+str(tp.channels)+';'+t.comment
+    return out.encode('utf-8','replace')
+    
+def settag(key,val,filename):
+    f = tagpy.FileRef(filename)
+    t = f.tag()
+    if key == 'track':
+        t.track = int(val)
+    elif key == 'title':
+        t.title = val
+    elif key == 'artist':
+        t.artist = val
+    elif key == 'album':
+        t.album = val
+    elif key == 'genre':
+        t.genre = val
+    elif key == 'comment':
+        t.comment = val
+    elif key == 'year':
+        t.year = int(val)
+    else:
+        print("""Available keys:
+    track title album artist genre year comment""")
+    f.save()
+
+def aide():
+    print("""ATags v0.2
+by David Lhoumaud <craft@ckdevelop.org>
+GNU/GPL v3
+OPTIONS:
+    get      Read audio tags
+        atags gettags \"file\"
+        return:
+            |track|title|album|artist|genre|year|hms|ms;bitrate;sampleRate;channels;comment
+            
+    set      Write audio tag
+        atags settag key* \"value\" \"file\"
+            * keys:
+                track title album artist genre year comment
+
+    ms2hms      Millisecondes to 00:00:00.000
+        atags ms2hms millisecondes
+            return:
+                00:00:00.000
+                
+    hms2ms      00:00:00.000 to millisecondes
+        atags hms2ms 00:00:00.000
+            return
+                millisecondes
+""")
+
+len(sys.argv)
+if len(sys.argv) <= 1:
+    aide()
+else:
+    if sys.argv[1] == 'get':
+        filename=sys.argv[2]
+        print gettags(filename)
+    elif sys.argv[1] == 'set':
+        key=sys.argv[2]
+        val=sys.argv[3]
+        filename=sys.argv[4]
+        settag(key,val,filename)
+    
+    elif sys.argv[1] == 'ms2hms':
+        varg=sys.argv[2]
+        ms2hms(varg)
+    elif sys.argv[1] == 'hms2ms':
+        varg=sys.argv[2]
+        try:
+            hms2ms(varg)
+        except:
+            print 'null'
+    else:
+        aide()

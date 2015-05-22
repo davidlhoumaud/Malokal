@@ -1,0 +1,32 @@
+# Changements gtk3
+ - Combo.get_active_text, plus valide, utiliser get_active ou le callback on_combo
+ - Couleurs modifiées, voir exemple.
+ - flag images/icons modifiés (gtk => Gtk, ...)
+ - systray moins de possibilités
+ - Plus de PID pour le terminal
+ - WINDOW@@BACKGROUND/TRANS et --transparent plus valide
+ - Fichier de style en css au lieu de rc
+
+Version 3.0.2
+ - AppIndicator en partie fonctionnel, attention_icon et folder path ne fonctionne pas pour l'instant.
+
+
+Version 3.0.1
+ - import déplacés pour erreur sur stdout
+ - statusbar modifié, idle_add
+ - encore du utf8 ...
+ - doc mise à jour
+ - on_combo modifié 
+ 
+Version 3.0.0
+ - GtkSourceView pour coloration et + du textview.
+ - Drag & Drop modifié 
+
+@Commandes
+ TEXT@@SOURCE@@LANG@@textview@@lang
+ TEXT@@SOURCE@@STYLE@@textview@@style
+ TREE@@SELECT@@treeview@@numLigne
+
+@Options
+ --sourceview
+

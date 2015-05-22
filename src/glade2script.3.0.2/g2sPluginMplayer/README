@@ -1,0 +1,38 @@
+ g2sMplayer plugin
+
+ Put g2sMplayer folder in the same path of glade2script (like this archive) or in python modules path.
+ This module can be use in python programm (look at the exemple at the end of mymplayer.py module)
+ 
+ 
+ All mplayer commands and properties are available.
+ Look at mplayer slave mode documentation.
+      http://www.mplayerhq.hu/DOCS/tech/slave.txt
+
+
+ Init the plugin:
+--------------------
+ PLUGIN@@INIT@@g2sMplayer@@name@@drawingarea@@options@@progress@@verbose
+  name = the plugin instance name
+  drawingarea =  the mplayer display drawingarea widget
+  options = mplayer options, ex: -ao oss -intf http or None
+  progress = the progression callback function or None
+  verbose = the verbose callback function (all mplayer output) or None
+
+
+ Access to mplayer commands or properties:
+  PLUGIN@@CMD@@name@@cmd.<command>('arg')
+  PLUGIN@@CMD@@name@@prop.<property>('arg')
+
+ To load a file, you can use:
+  PLUGIN@@CMD@@name@@loadfile('file')
+  instead of:
+    PLUGIN@@CMD@@name@@cmd.loadfile('file 0')
+
+ To pausing, you should have to use:
+  PLUGIN@@CMD@@name@@pause()
+  
+ To send directly to mplayer (to add pausing_keep for exemple)
+  PLUGIN@@CMD@@name@@input_cmd('pausing_keep command <arg>')
+
+
+

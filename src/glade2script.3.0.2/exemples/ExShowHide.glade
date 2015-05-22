@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<interface>
+  <!-- interface-requires gtk+ 2.6 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkWindow" id="window1">
+    <property name="visible">True</property>
+    <property name="window_position">center</property>
+    <signal name="destroy" handler="gtk_widget_destroy"/>
+    <child>
+      <object class="GtkHBox" id="hbox1">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkNotebook" id="notebook1">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <child>
+              <object class="GtkVBox" id="vbox1">
+                <property name="visible">True</property>
+                <child>
+                  <object class="GtkHBox" id="hbox3">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkViewport" id="viewport2">
+                        <property name="visible">True</property>
+                        <property name="resize_mode">queue</property>
+                        <property name="shadow_type">none</property>
+                        <child>
+                          <object class="GtkLabel" id="label1">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Pour show,hide une window, utiliser le callback
+&lt;b&gt;on_show&lt;/b&gt; et &lt;b&gt;on_hide&lt;/b&gt; avec comme &lt;b&gt;user data&lt;/b&gt; la window
+sur laquelle agir. La commande &lt;b&gt;SET@&lt;/b&gt; peut &#xEA;tre utilis&#xE9;,
+mais un bug si la position est sp&#xE9;cifi&#xE9; (mouse, center...)
+
+Pour show hide un widget, on peut &#xE9;galement passer par 
+&lt;b&gt;SET@widget.show()&lt;/b&gt; ou &lt;b&gt;SET@widget.hide()&lt;/b&gt;
+
+Le principe est identique pour griser un widget.
+&lt;b&gt;on_sensitive, off_sensitive&lt;/b&gt; ou
+&lt;b&gt;SET@widget.set_sensitive(True)&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="padding">10</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="padding">10</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkHBox" id="hbox2">
+                    <property name="visible">True</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkButton" id="_button2">
+                        <property name="label" translatable="yes">hide</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_hide" object="window_pop"/>
+                        <signal name="clicked" handler="on_clicked"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="button1">
+                        <property name="label" translatable="yes">show</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_show" object="window_pop"/>
+                        <signal name="clicked" handler="on_clicked"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="label2">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Show / Hide</property>
+              </object>
+              <packing>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow1">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hscrollbar_policy">automatic</property>
+                <property name="vscrollbar_policy">automatic</property>
+                <child>
+                  <object class="GtkViewport" id="viewport1">
+                    <property name="visible">True</property>
+                    <property name="resize_mode">queue</property>
+                    <child>
+                      <object class="GtkVBox" id="vbox2">
+                        <property name="visible">True</property>
+                        <child>
+                          <object class="GtkFrame" id="frame7">
+                            <property name="height_request">150</property>
+                            <property name="visible">True</property>
+                            <property name="label_xalign">0</property>
+                            <child>
+                              <object class="GtkScrolledWindow" id="scrolledwindow3">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="hscrollbar_policy">automatic</property>
+                                <property name="vscrollbar_policy">automatic</property>
+                                <child>
+                                  <object class="GtkViewport" id="viewport3">
+                                    <property name="visible">True</property>
+                                    <property name="resize_mode">queue</property>
+                                    <property name="shadow_type">none</property>
+                                    <child>
+                                      <object class="GtkLabel" id="label13">
+                                        <property name="visible">True</property>
+                                        <property name="xalign">0.019999999552965164</property>
+                                        <property name="label" translatable="yes">&lt;i&gt;signal  :&lt;/i&gt; clicked
+&lt;i&gt;callback :&lt;/i&gt; on_show
+&lt;i&gt;userdata :&lt;/i&gt; window_popup
+&lt;i&gt;signal  :&lt;/i&gt; clicked
+&lt;i&gt;callback :&lt;/i&gt; on_clicked
+&lt;i&gt;fonction associ&#xE9; :&lt;/i&gt; button1
+&lt;i&gt;argument :&lt;/i&gt; clicked</property>
+                                        <property name="use_markup">True</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child type="label">
+                              <object class="GtkLabel" id="label14">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">&lt;b&gt;button1&lt;/b&gt;</property>
+                                <property name="use_markup">True</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkFrame" id="frame1">
+                            <property name="height_request">150</property>
+                            <property name="visible">True</property>
+                            <property name="label_xalign">0</property>
+                            <child>
+                              <object class="GtkScrolledWindow" id="scrolledwindow2">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="hscrollbar_policy">automatic</property>
+                                <property name="vscrollbar_policy">automatic</property>
+                                <child>
+                                  <object class="GtkViewport" id="viewport4">
+                                    <property name="visible">True</property>
+                                    <property name="resize_mode">queue</property>
+                                    <property name="shadow_type">none</property>
+                                    <child>
+                                      <object class="GtkLabel" id="label3">
+                                        <property name="visible">True</property>
+                                        <property name="xalign">0.019999999552965164</property>
+                                        <property name="label" translatable="yes">&lt;i&gt;signal  :&lt;/i&gt; clicked
+&lt;i&gt;callback :&lt;/i&gt; on_hide
+&lt;i&gt;userdata :&lt;/i&gt; window_popup
+&lt;i&gt;signal  :&lt;/i&gt; clicked
+&lt;i&gt;callback :&lt;/i&gt; on_clicked
+&lt;i&gt;fonction associ&#xE9; :&lt;/i&gt; _button2
+&lt;i&gt;argument :&lt;/i&gt; clicked</property>
+                                        <property name="use_markup">True</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child type="label">
+                              <object class="GtkLabel" id="label4">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">&lt;b&gt;_button2&lt;/b&gt;</property>
+                                <property name="use_markup">True</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="label5">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">D&#xE9;tails widgets</property>
+              </object>
+              <packing>
+                <property name="position">1</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="window_pop">
+    <property name="type">popup</property>
+    <property name="window_position">mouse</property>
+    <child>
+      <object class="GtkLabel" id="label11">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Popup, position MOUSE</property>
+      </object>
+    </child>
+  </object>
+</interface>

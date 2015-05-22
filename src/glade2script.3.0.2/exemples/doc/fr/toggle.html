@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link title="" media="all" type="text/css" href="mycss.css" rel="stylesheet">
+  <title>Gtk.ToggleButton</title>
+</head>
+<body>
+<!-- HEADER -->
+<table style="width:100%;" summary="Navigation header">
+  <tbody>
+  <tr>
+    <td></td>
+    <th class="align_center">Gtk.ToggleButton</th>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="align_left"><a href="textview.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="treeview.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+<br>
+<hr>
+<br>
+
+<h2>Gtk.ToggleButton</h2>
+<p>Gtk.ToggleButton - Gtk.CheckButton - Gtk.RadioButton</p>
+
+<br>
+<br>
+<br>
+<br>
+
+<h3>Commandes pyGtk</h3>
+<pre class="bleu">Les plus utilisées: <code class="constructorsynopsis"><br> </code><code class="methodsynopsis"><span class="methodname"><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtktogglebutton.html#method-gtktogglebutton--set-active" title="gtk.ToggleButton.set_active">set_active</a></span>(<span class="methodparam"><span class="parameter"><strong class="parameter"><code>is_active</code></strong></span></span>)</code><br> <code class="methodsynopsis"><span class="methodname"><a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtktogglebutton.html#method-gtktogglebutton--get-active" title="gtk.ToggleButton.get_active">get_active</a></span>(<span class="methodparam"></span>)</code><br><br>Documentation pyGtk: <span class="refentrytitle"><a href="/usr/share/gtk-doc/html/pygtk/class-gtktogglebutton.html">gtk.ToggleButton</a> </span><span class="refentrytitle"><a href="/usr/share/gtk-doc/html/pygtk/class-gtkcheckbutton.html">gtk.CheckButton</a> </span><span class="refentrytitle"><a href="/usr/share/gtk-doc/html/pygtk/class-gtkradiobutton.html">gtk.RadioButton</a></span>
+</pre>
+
+<br>
+<br>
+<br>
+
+<h3>Commandes glade2script</h3>
+<div id="top">
+<b><a href="#TOGGLEACTIVE">TOGGLE@@ACTIVE</a><i>@@widget,widget</i></b><br>
+<b><a href="#ISACTIVE">ISACTIVE@@</a><i>widget</i></b><br>
+</div>
+
+<br>
+<br>
+<br>
+
+<h3>Callbacks</h3>
+<div class="orange">
+<a href="signaux.html#on_toggled">on_toggled</a>
+</div>
+Pour agir sur les Toggles
+<div class="orange">
+<a href="signaux.html#call-toggle_active">on_active</a><br>
+<a href="signaux.html#call-off_active">off_active</a><br>
+<a href="signaux.html#call-toggle_active">toogle_active</a>
+</div>
+<br>
+<br>
+<br>
+
+<h3>Signaux</h3>
+<div class="orange">
+"<a class="link" href="/usr/share/gtk-doc/html/pygtk/class-gtktogglebutton.html#signal-gtktogglebutton--toggled" title="The &quot;toggled&quot; gtk.ToggleButton Signal">toggled</a>"
+</div>
+
+<br>
+<br>
+<br>
+
+<h3>Description</h3>
+
+&nbsp;Ces commandes sont valables pour les CheckButton, RadioButton
+et ToggleButton<br>
+&nbsp;<br>
+&nbsp;<br><span class="bbu"><strong>Pour récuperer l'état d'un check, 3 solutions:</strong></span><br>&nbsp;&nbsp;
+commande pygtk:&nbsp;&nbsp;  <br>
+<pre><code>echo 'GET@_check1.get_active()'<br>echo 'ITER@@' #si tu comptes travailler sur le résultat.<br># la variable $_check1_get_active=True/False</code></pre>
+<br>
+&nbsp;&nbsp; callback sur check: <br>
+<pre><code># renseigner signal <b>toggled</b> =&gt; callback <b>on_toggled</b><br>
+# la fonction sera appelé à chaque action sur check avec argument True/False</code></pre>
+<br>
+&nbsp;&nbsp; commande G2S: <small><a href="commande_glade.html#ISACTIVE">ISACTIVE@@</a><span class="bold-italic"></span></small><br>
+<br>
+<br>
+<strong>Pour activer un check:</strong><br>
+&nbsp;&nbsp;&nbsp; commande pygtk:<br>
+<pre><code>echo 'SET@_check1.set_active(True)'</code></pre>
+<br>
+&nbsp;&nbsp; callback sur check:<br>
+<pre><code># on_active, off_active, toggle_active, renseigner user-data avec le nom du check à modifier (à mettre sur un bouton par exemple).</code></pre>
+<br>
+&nbsp;&nbsp; commande G2S: <small><a href="commande_glade.html#TOGGLEACTIVE">TOGGLE@@ACTIVE</a></small><br>
+
+<br>
+<br>
+<br>
+<br>
+
+<hr>
+<br>
+
+<table style="width:100%;">
+  <tbody>
+  <tr>
+    <td class="align_left"><a href="textview.html">Prev</a></td>
+    <td class="align_center"><a href="index.html">The Glade2script Reference</a></td>
+    <td class="align_right"><a href="treeview.html">Next</a></td>
+  </tr>
+</tbody>
+</table>
+
+</body></html>
